@@ -1,0 +1,49 @@
+
+%pip install census us
+
+import pandas as pd
+import seaborn as sns
+import matplotlib as plt
+
+from census import Census
+from us import states
+
+c = Census('fb97753783c42ae57fe1a640e38fe04e921e5d1a')
+
+city_2010 = c.sf1.state_place(('NAME', 'P001001', 'H001001', 'P013001'), states.CA.fips, '*', year=2010)
+c_pop_2010 = pd.DataFrame.from_records(city_2010)
+c_pop_2010_50000 = c_pop_2010[c_pop_2010['P001001'].astype(int) >= 50000].rename(columns={'P001001': 'Total_2010', 'place': 'FIPS', 'H001001': 'Total_Housing_2010', 'P013001': 'Median_Age_2010'})
+
+c_pop_2010_50000.head()
+
+city_2000 = c.sf1.state_place(('NAME', 'P001001', 'H001001', 'P013001'), states.CA.fips, '*', year=2000)
+c_pop_2000 = pd.DataFrame.from_records(city_2000)
+c_pop_2000_50000 = c_pop_2000[c_pop_2000['P001001'].astype(int) >= 30000].rename(columns={'P001001': 'Total_2000', 'place': 'FIPS', 'H001001': 'Total_Housing_2000', 'P013001': 'Median_Age_2000'})
+
+c_pop_2000_50000.drop(columns=['NAME', 'state'], inplace=True)
+
+c_pop_2000_50000.head()
+
+c_pop_2000_50000.set_index('FIPS', inplace=True)
+c_pop_2010_50000.set_index('FIPS', inplace=True)
+
+city_join = c_pop_2000_50000.join(c_pop_2010_50000, on='FIPS')
+
+city_join.head()
+
+import plotly.graph_objects as go
+
+fig = go.Figure(data=[
+    go.Bar(name='2000_pop', x=city_join['NAME'], y=city_join['Total_2000']),
+    go.Bar(name='2000_housing', x=city_join['NAME'], y=city_join['Total_Housing_2000']),
+    go.Bar(name='2010_pop', x=city_join['NAME'], y=city_join['Total_2010']),
+    go.Bar(name='2010_housing', x=city_join['NAME'], y=city_join['Total_Housing_2010'])
+])
+fig.update_layout(barmode='groupe')
+fig.show()
+
+
+
+
+
+
