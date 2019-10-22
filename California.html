@@ -13122,7 +13122,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">pip</span> install census us
@@ -13147,9 +13147,9 @@ Requirement already satisfied: us in /Users/Ryan/anaconda3/lib/python3.7/site-pa
 Requirement already satisfied: requests&gt;=1.1.0 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from census) (2.22.0)
 Requirement already satisfied: future in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from census) (0.17.1)
 Requirement already satisfied: jellyfish==0.5.6 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from us) (0.5.6)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (2019.9.11)
 Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (1.24.2)
 Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (2.8)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (2019.9.11)
 Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (3.0.4)
 Note: you may need to restart the kernel to use updated packages.
 </pre>
@@ -13162,7 +13162,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -13180,7 +13180,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="s1">&#39;fb97753783c42ae57fe1a640e38fe04e921e5d1a&#39;</span><span class="p">)</span>
@@ -13200,12 +13200,34 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2010</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">((</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;P001001&#39;</span><span class="p">,</span> <span class="s1">&#39;H001001&#39;</span><span class="p">,</span> <span class="s1">&#39;P013001&#39;</span><span class="p">),</span> <span class="n">states</span><span class="o">.</span><span class="n">CA</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2010</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2010</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">((</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;H001001&#39;</span><span class="p">,</span> 
+                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;P002002&#39;</span><span class="p">,</span> <span class="s1">&#39;P002005&#39;</span><span class="p">,</span> 
+                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;H003001&#39;</span><span class="p">,</span> <span class="s1">&#39;P027001&#39;</span><span class="p">,</span> 
+                               <span class="s1">&#39;H005001&#39;</span><span class="p">,</span> <span class="s1">&#39;H005002&#39;</span><span class="p">,</span> <span class="s1">&#39;H005003&#39;</span><span class="p">,</span> 
+                               <span class="s1">&#39;H005004&#39;</span><span class="p">,</span> <span class="s1">&#39;H005005&#39;</span><span class="p">,</span> <span class="s1">&#39;H005006&#39;</span><span class="p">,</span> 
+                               <span class="s1">&#39;H005007&#39;</span><span class="p">,</span> <span class="s1">&#39;P002001&#39;</span><span class="p">),</span> 
+                              <span class="n">states</span><span class="o">.</span><span class="n">CA</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2010</span><span class="p">)</span>
 <span class="n">c_pop_2010</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">city_2010</span><span class="p">)</span>
-<span class="n">c_pop_2010_50000</span> <span class="o">=</span> <span class="n">c_pop_2010</span><span class="p">[</span><span class="n">c_pop_2010</span><span class="p">[</span><span class="s1">&#39;P001001&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">50000</span><span class="p">]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;P001001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_2010&#39;</span><span class="p">,</span> <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="s1">&#39;H001001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Housing_2010&#39;</span><span class="p">,</span> <span class="s1">&#39;P013001&#39;</span><span class="p">:</span> <span class="s1">&#39;Median_Age_2010&#39;</span><span class="p">})</span>
+<span class="n">c_pop_2010_50000</span> <span class="o">=</span> <span class="n">c_pop_2010</span><span class="p">[</span><span class="n">c_pop_2010</span><span class="p">[</span><span class="s1">&#39;P002001&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">50000</span><span class="p">]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;NAME&#39;</span> <span class="p">:</span> <span class="s1">&#39;City_Name&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P002001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Population_2010&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P002002&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Urban_Population_2010&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P002005&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Rural_Population_2010&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H001001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Housing_2010&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P013001&#39;</span><span class="p">:</span> <span class="s1">&#39;Median_Age_2010&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H003001&#39;</span><span class="p">:</span> <span class="s1">&#39;Occupancy_Status_For_Housing_Units_2010&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P027001&#39;</span><span class="p">:</span> <span class="s1">&#39;Presence_of_Non-Relatives_2010&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005001&#39;</span><span class="p">:</span> <span class="s1">&#39;Vacancy_Status_2010&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005002&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Rent_2010&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005003&#39;</span><span class="p">:</span> <span class="s1">&#39;Rented_Not_Occupied_2010&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005004&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Sale_Only_2010&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005005&#39;</span><span class="p">:</span> <span class="s1">&#39;Sold_Not_Occupied_2010&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005006&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Seasonal_Recreational_Or_Occasional_Use_2010&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005007&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Migrant_Workers_2010&#39;</span><span class="p">})</span>
 </pre></div>
 
     </div>
@@ -13215,7 +13237,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[67]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2010_50000</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13231,7 +13253,7 @@ Note: you may need to restart the kernel to use updated packages.
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[67]:</div>
+    <div class="prompt output_prompt">Out[47]:</div>
 
 
 
@@ -13255,9 +13277,20 @@ Note: you may need to restart the kernel to use updated packages.
     <tr style="text-align: right;">
       <th></th>
       <th>Total_Housing_2010</th>
-      <th>NAME</th>
-      <th>Total_2010</th>
+      <th>Occupancy_Status_For_Housing_Units_2010</th>
+      <th>Vacancy_Status_2010</th>
+      <th>For_Rent_2010</th>
+      <th>Rented_Not_Occupied_2010</th>
+      <th>For_Sale_Only_2010</th>
+      <th>Sold_Not_Occupied_2010</th>
+      <th>For_Seasonal_Recreational_Or_Occasional_Use_2010</th>
+      <th>For_Migrant_Workers_2010</th>
+      <th>City_Name</th>
+      <th>Total_Population_2010</th>
+      <th>Total_Urban_Population_2010</th>
+      <th>Total_Rural_Population_2010</th>
       <th>Median_Age_2010</th>
+      <th>Presence_of_Non-Relatives_2010</th>
       <th>FIPS</th>
       <th>state</th>
     </tr>
@@ -13266,45 +13299,100 @@ Note: you may need to restart the kernel to use updated packages.
     <tr>
       <th>10</th>
       <td>32351.0</td>
+      <td>32351.0</td>
+      <td>2228.0</td>
+      <td>942.0</td>
+      <td>65.0</td>
+      <td>164.0</td>
+      <td>63.0</td>
+      <td>207.0</td>
+      <td>1.0</td>
       <td>Alameda city, California</td>
-      <td>73812</td>
+      <td>73812.0</td>
+      <td>73812.0</td>
+      <td>0.0</td>
       <td>40.7</td>
+      <td>30123.0</td>
       <td>00562</td>
       <td>06</td>
     </tr>
     <tr>
       <th>15</th>
       <td>30915.0</td>
+      <td>30915.0</td>
+      <td>1698.0</td>
+      <td>972.0</td>
+      <td>34.0</td>
+      <td>162.0</td>
+      <td>55.0</td>
+      <td>139.0</td>
+      <td>0.0</td>
       <td>Alhambra city, California</td>
-      <td>83089</td>
+      <td>83089.0</td>
+      <td>83089.0</td>
+      <td>0.0</td>
       <td>39.3</td>
+      <td>29217.0</td>
       <td>00884</td>
       <td>06</td>
     </tr>
     <tr>
       <th>35</th>
       <td>104237.0</td>
+      <td>104237.0</td>
+      <td>5943.0</td>
+      <td>3915.0</td>
+      <td>140.0</td>
+      <td>819.0</td>
+      <td>217.0</td>
+      <td>243.0</td>
+      <td>0.0</td>
       <td>Anaheim city, California</td>
-      <td>336265</td>
+      <td>336265.0</td>
+      <td>336256.0</td>
+      <td>9.0</td>
       <td>32.4</td>
+      <td>98294.0</td>
       <td>02000</td>
       <td>06</td>
     </tr>
     <tr>
       <th>41</th>
       <td>34849.0</td>
+      <td>34849.0</td>
+      <td>2597.0</td>
+      <td>1027.0</td>
+      <td>47.0</td>
+      <td>580.0</td>
+      <td>118.0</td>
+      <td>84.0</td>
+      <td>0.0</td>
       <td>Antioch city, California</td>
-      <td>102372</td>
+      <td>102372.0</td>
+      <td>102150.0</td>
+      <td>222.0</td>
       <td>33.8</td>
+      <td>32252.0</td>
       <td>02252</td>
       <td>06</td>
     </tr>
     <tr>
       <th>43</th>
       <td>26117.0</td>
+      <td>26117.0</td>
+      <td>2519.0</td>
+      <td>813.0</td>
+      <td>27.0</td>
+      <td>687.0</td>
+      <td>164.0</td>
+      <td>214.0</td>
+      <td>0.0</td>
       <td>Apple Valley town, California</td>
-      <td>69135</td>
+      <td>69135.0</td>
+      <td>67458.0</td>
+      <td>1677.0</td>
       <td>37.0</td>
+      <td>23598.0</td>
       <td>02364</td>
       <td>06</td>
     </tr>
@@ -13321,12 +13409,33 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2000</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">((</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;P001001&#39;</span><span class="p">,</span> <span class="s1">&#39;H001001&#39;</span><span class="p">,</span> <span class="s1">&#39;P013001&#39;</span><span class="p">),</span> <span class="n">states</span><span class="o">.</span><span class="n">CA</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2000</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">((</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;H001001&#39;</span><span class="p">,</span> 
+                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;P002002&#39;</span><span class="p">,</span> <span class="s1">&#39;P002005&#39;</span><span class="p">,</span> 
+                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;H003001&#39;</span><span class="p">,</span> <span class="s1">&#39;P027001&#39;</span><span class="p">,</span> 
+                               <span class="s1">&#39;H005001&#39;</span><span class="p">,</span> <span class="s1">&#39;H005002&#39;</span><span class="p">,</span> <span class="s1">&#39;H005003&#39;</span><span class="p">,</span> 
+                               <span class="s1">&#39;H005004&#39;</span><span class="p">,</span> <span class="s1">&#39;H005005&#39;</span><span class="p">,</span> <span class="s1">&#39;H005006&#39;</span><span class="p">,</span> 
+                               <span class="s1">&#39;H005007&#39;</span><span class="p">,</span> <span class="s1">&#39;P002001&#39;</span><span class="p">),</span> <span class="n">states</span><span class="o">.</span><span class="n">CA</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
 <span class="n">c_pop_2000</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">city_2000</span><span class="p">)</span>
-<span class="n">c_pop_2000_50000</span> <span class="o">=</span> <span class="n">c_pop_2000</span><span class="p">[</span><span class="n">c_pop_2000</span><span class="p">[</span><span class="s1">&#39;P001001&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">30000</span><span class="p">]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;P001001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_2000&#39;</span><span class="p">,</span> <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="s1">&#39;H001001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Housing_2000&#39;</span><span class="p">,</span> <span class="s1">&#39;P013001&#39;</span><span class="p">:</span> <span class="s1">&#39;Median_Age_2000&#39;</span><span class="p">})</span>
+<span class="n">c_pop_2000_50000</span> <span class="o">=</span> <span class="n">c_pop_2000</span><span class="p">[</span><span class="n">c_pop_2000</span><span class="p">[</span><span class="s1">&#39;P002001&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">30000</span><span class="p">]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;NAME&#39;</span> <span class="p">:</span> <span class="s1">&#39;City_Name&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P002001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P002002&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Urban_Population_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P002005&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Rural_Population_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H001001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Housing_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P013001&#39;</span><span class="p">:</span> <span class="s1">&#39;Median_Age_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H003001&#39;</span><span class="p">:</span> <span class="s1">&#39;Occupancy_Status_For_Housing_Units_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P027001&#39;</span><span class="p">:</span> <span class="s1">&#39;Presence_of_Non-Relatives_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005001&#39;</span><span class="p">:</span> <span class="s1">&#39;Vacancy_Status_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005002&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Rent_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005003&#39;</span><span class="p">:</span> <span class="s1">&#39;Rented_Not_Occupied_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005004&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Sale_Only_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005005&#39;</span><span class="p">:</span> <span class="s1">&#39;Sold_Not_Occupied_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005006&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Seasonal_Recreational_Or_Occasional_Use_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005007&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Migrant_Workers_2000&#39;</span><span class="p">})</span>
 </pre></div>
 
     </div>
@@ -13336,10 +13445,10 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[70]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13349,7 +13458,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13365,7 +13474,7 @@ Note: you may need to restart the kernel to use updated packages.
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[71]:</div>
+    <div class="prompt output_prompt">Out[53]:</div>
 
 
 
@@ -13389,8 +13498,19 @@ Note: you may need to restart the kernel to use updated packages.
     <tr style="text-align: right;">
       <th></th>
       <th>Total_Housing_2000</th>
-      <th>Total_2000</th>
+      <th>Occupancy_Status_For_Housing_Units_2000</th>
+      <th>Vacancy_Status_2000</th>
+      <th>For_Rent_2000</th>
+      <th>Rented_Not_Occupied_2000</th>
+      <th>For_Sale_Only_2000</th>
+      <th>Sold_Not_Occupied_2000</th>
+      <th>For_Seasonal_Recreational_Or_Occasional_Use_2000</th>
+      <th>For_Migrant_Workers_2000</th>
+      <th>Total_Population_2000</th>
+      <th>Total_Urban_Population_2000</th>
+      <th>Total_Rural_Population_2000</th>
       <th>Median_Age_2000</th>
+      <th>Presence_of_Non-Relatives_2000</th>
       <th>FIPS</th>
     </tr>
   </thead>
@@ -13398,36 +13518,91 @@ Note: you may need to restart the kernel to use updated packages.
     <tr>
       <th>2</th>
       <td>88262</td>
+      <td>88262</td>
+      <td>4821</td>
+      <td>2187</td>
+      <td>1018</td>
+      <td>309</td>
+      <td>268</td>
+      <td>3</td>
+      <td>1036</td>
       <td>247057</td>
+      <td>0</td>
+      <td>0</td>
       <td>30.1</td>
+      <td>247057</td>
       <td>03526</td>
     </tr>
     <tr>
       <th>9</th>
       <td>8830</td>
+      <td>8830</td>
+      <td>421</td>
+      <td>204</td>
+      <td>57</td>
+      <td>30</td>
+      <td>27</td>
+      <td>17</td>
+      <td>86</td>
       <td>38824</td>
+      <td>0</td>
+      <td>0</td>
       <td>27.9</td>
+      <td>38824</td>
       <td>18394</td>
     </tr>
     <tr>
       <th>54</th>
       <td>24386</td>
+      <td>24386</td>
+      <td>910</td>
+      <td>371</td>
+      <td>174</td>
+      <td>136</td>
+      <td>69</td>
+      <td>0</td>
+      <td>160</td>
       <td>59954</td>
+      <td>0</td>
+      <td>0</td>
       <td>25.9</td>
+      <td>59954</td>
       <td>13014</td>
     </tr>
     <tr>
       <th>73</th>
       <td>25250</td>
+      <td>25250</td>
+      <td>903</td>
+      <td>397</td>
+      <td>229</td>
+      <td>54</td>
+      <td>42</td>
+      <td>0</td>
+      <td>181</td>
       <td>68468</td>
+      <td>0</td>
+      <td>0</td>
       <td>32.8</td>
+      <td>68468</td>
       <td>14218</td>
     </tr>
     <tr>
       <th>79</th>
       <td>149025</td>
+      <td>149025</td>
+      <td>8946</td>
+      <td>4769</td>
+      <td>1385</td>
+      <td>532</td>
+      <td>363</td>
+      <td>6</td>
+      <td>1891</td>
       <td>427652</td>
+      <td>0</td>
+      <td>0</td>
       <td>28.5</td>
+      <td>427652</td>
       <td>27000</td>
     </tr>
   </tbody>
@@ -13443,7 +13618,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[72]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -13457,7 +13632,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_join</span> <span class="o">=</span> <span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c_pop_2010_50000</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;FIPS&#39;</span><span class="p">)</span>
@@ -13470,7 +13645,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_join</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13486,7 +13661,7 @@ Note: you may need to restart the kernel to use updated packages.
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[74]:</div>
+    <div class="prompt output_prompt">Out[56]:</div>
 
 
 
@@ -13510,16 +13685,42 @@ Note: you may need to restart the kernel to use updated packages.
     <tr style="text-align: right;">
       <th></th>
       <th>Total_Housing_2000</th>
-      <th>Total_2000</th>
-      <th>Median_Age_2000</th>
-      <th>Total_Housing_2010</th>
-      <th>NAME</th>
-      <th>Total_2010</th>
+      <th>Occupancy_Status_For_Housing_Units_2000</th>
+      <th>Vacancy_Status_2000</th>
+      <th>For_Rent_2000</th>
+      <th>Rented_Not_Occupied_2000</th>
+      <th>For_Sale_Only_2000</th>
+      <th>Sold_Not_Occupied_2000</th>
+      <th>For_Seasonal_Recreational_Or_Occasional_Use_2000</th>
+      <th>For_Migrant_Workers_2000</th>
+      <th>Total_Population_2000</th>
+      <th>...</th>
+      <th>Sold_Not_Occupied_2010</th>
+      <th>For_Seasonal_Recreational_Or_Occasional_Use_2010</th>
+      <th>For_Migrant_Workers_2010</th>
+      <th>City_Name</th>
+      <th>Total_Population_2010</th>
+      <th>Total_Urban_Population_2010</th>
+      <th>Total_Rural_Population_2010</th>
       <th>Median_Age_2010</th>
+      <th>Presence_of_Non-Relatives_2010</th>
       <th>state</th>
     </tr>
     <tr>
       <th>FIPS</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -13534,60 +13735,126 @@ Note: you may need to restart the kernel to use updated packages.
     <tr>
       <th>03526</th>
       <td>88262</td>
+      <td>88262</td>
+      <td>4821</td>
+      <td>2187</td>
+      <td>1018</td>
+      <td>309</td>
+      <td>268</td>
+      <td>3</td>
+      <td>1036</td>
       <td>247057</td>
-      <td>30.1</td>
-      <td>120725.0</td>
+      <td>...</td>
+      <td>387.0</td>
+      <td>427.0</td>
+      <td>7.0</td>
       <td>Bakersfield city, California</td>
-      <td>347483</td>
+      <td>347483.0</td>
+      <td>345531.0</td>
+      <td>1952.0</td>
       <td>30.0</td>
+      <td>111132.0</td>
       <td>06</td>
     </tr>
     <tr>
       <th>18394</th>
       <td>8830</td>
+      <td>8830</td>
+      <td>421</td>
+      <td>204</td>
+      <td>57</td>
+      <td>30</td>
+      <td>27</td>
+      <td>17</td>
+      <td>86</td>
       <td>38824</td>
-      <td>27.9</td>
-      <td>10713.0</td>
+      <td>...</td>
+      <td>20.0</td>
+      <td>40.0</td>
+      <td>0.0</td>
       <td>Delano city, California</td>
-      <td>53041</td>
+      <td>53041.0</td>
+      <td>53019.0</td>
+      <td>22.0</td>
       <td>28.5</td>
+      <td>10260.0</td>
       <td>06</td>
     </tr>
     <tr>
       <th>13014</th>
       <td>24386</td>
+      <td>24386</td>
+      <td>910</td>
+      <td>371</td>
+      <td>174</td>
+      <td>136</td>
+      <td>69</td>
+      <td>0</td>
+      <td>160</td>
       <td>59954</td>
-      <td>25.9</td>
-      <td>37050.0</td>
+      <td>...</td>
+      <td>79.0</td>
+      <td>147.0</td>
+      <td>0.0</td>
       <td>Chico city, California</td>
-      <td>86187</td>
+      <td>86187.0</td>
+      <td>85922.0</td>
+      <td>265.0</td>
       <td>28.6</td>
+      <td>34805.0</td>
       <td>06</td>
     </tr>
     <tr>
       <th>14218</th>
       <td>25250</td>
+      <td>25250</td>
+      <td>903</td>
+      <td>397</td>
+      <td>229</td>
+      <td>54</td>
+      <td>42</td>
+      <td>0</td>
+      <td>181</td>
       <td>68468</td>
-      <td>32.8</td>
-      <td>35306.0</td>
+      <td>...</td>
+      <td>95.0</td>
+      <td>80.0</td>
+      <td>0.0</td>
       <td>Clovis city, California</td>
-      <td>95631</td>
+      <td>95631.0</td>
+      <td>95629.0</td>
+      <td>2.0</td>
       <td>34.1</td>
+      <td>33419.0</td>
       <td>06</td>
     </tr>
     <tr>
       <th>27000</th>
       <td>149025</td>
+      <td>149025</td>
+      <td>8946</td>
+      <td>4769</td>
+      <td>1385</td>
+      <td>532</td>
+      <td>363</td>
+      <td>6</td>
+      <td>1891</td>
       <td>427652</td>
-      <td>28.5</td>
-      <td>171288.0</td>
+      <td>...</td>
+      <td>419.0</td>
+      <td>449.0</td>
+      <td>4.0</td>
       <td>Fresno city, California</td>
-      <td>494665</td>
+      <td>494665.0</td>
+      <td>494522.0</td>
+      <td>143.0</td>
       <td>29.3</td>
+      <td>158349.0</td>
       <td>06</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 30 columns</p>
 </div>
 </div>
 
@@ -13599,10 +13866,10 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_2000&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_2000&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;i8&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;i8&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13612,10 +13879,10 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[98]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_join</span> <span class="o">=</span> <span class="n">city_join</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Total_2000&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_join</span> <span class="o">=</span> <span class="n">city_join</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13625,7 +13892,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[99]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
@@ -13638,14 +13905,38 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[100]:</div>
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span>
-    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_2000&#39;</span><span class="p">]),</span>
-    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_Housing_2000&#39;</span><span class="p">]),</span>
-    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_2010&#39;</span><span class="p">]),</span>
-    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_Housing_2010&#39;</span><span class="p">])</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_Housing_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_Population_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_Housing_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_urban_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_Urban_Population_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_urban_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_Urban_Population_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_rural_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_Rural_Population_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_rural_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Total_Rural_Population_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_median_age&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Median_Age_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_median_age&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Median_Age_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_occupancy_status&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Occupancy_Status_For_Housing_Units_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_occupancy_status&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Occupancy_Status_For_Housing_Units_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_non-relatives&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Presence_of_Non-Relatives_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_non-relatives&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Presence_of_Non-Relatives_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_vacancy_status&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Vacancy_Status_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_vacancy_status&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Vacancy_Status_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_for_rent&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;For_Rent_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_for_rent&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;For_Rent_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_rented_not_occupied&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Rented_Not_Occupied_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_rented_not_occupied&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Rented_Not_Occupied_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_for_sale&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;For_Sale_Only_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_for_sale&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;For_Sale_Only_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_sold_not_occupied&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Sold_Not_Occupied_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_sold_not_occupied&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;Sold_Not_Occupied_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_seasonal_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;For_Seasonal_Recreational_Or_Occasional_Use_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_seasonal_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;For_Seasonal_Recreational_Or_Occasional_Use_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_migrant_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;For_Migrant_Workers_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_migrant_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">city_join</span><span class="p">[</span><span class="s1">&#39;For_Migrant_Workers_2010&#39;</span><span class="p">]),</span>
 <span class="p">])</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">barmode</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -13669,20 +13960,20 @@ Note: you may need to restart the kernel to use updated packages.
 <div>
         
         
-            <div id="cc8d775b-b70f-4219-8cda-004c1843c984" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <div id="371cb87e-87d9-4895-98f3-4c811d90c3c5" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     
-                if (document.getElementById("cc8d775b-b70f-4219-8cda-004c1843c984")) {
+                if (document.getElementById("371cb87e-87d9-4895-98f3-4c811d90c3c5")) {
                     Plotly.newPlot(
-                        'cc8d775b-b70f-4219-8cda-004c1843c984',
-                        [{"name": "2000_pop", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [3694820, 1223400, 894943, 776733, 461522]}, {"name": "2000_housing", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["1337706", "469689", "281841", "346527", "171632"]}, {"name": "2010_pop", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["3792621", "1307402", "945942", "805235", "462257"]}, {"name": "2010_housing", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [1413995.0, 516033.0, 314038.0, 376942.0, 176032.0]}],
+                        '371cb87e-87d9-4895-98f3-4c811d90c3c5',
+                        [{"name": "2000_pop", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [3694820, 1223400, 894943, 776733, 461522]}, {"name": "2000_housing", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["1337706", "469689", "281841", "346527", "171632"]}, {"name": "2010_pop", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [3792621.0, 1307402.0, 945942.0, 805235.0, 462257.0]}, {"name": "2010_housing", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [1413995.0, 516033.0, 314038.0, 376942.0, 176032.0]}, {"name": "2000_urban_pop", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["0", "0", "0", "0", "0"]}, {"name": "2010_urban_pop", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [3790144.0, 1306002.0, 945631.0, 805235.0, 462257.0]}, {"name": "2000_rural_pop", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["0", "0", "0", "0", "0"]}, {"name": "2010_rural_pop", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [2477.0, 1400.0, 311.0, 0.0, 0.0]}, {"name": "2000_median_age", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["31.6", "32.5", "32.6", "36.5", "30.8"]}, {"name": "2010_median_age", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [34.1, 33.6, 35.2, 38.5, 33.2]}, {"name": "2000_occupancy_status", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["1337706", "469689", "281841", "346527", "171632"]}, {"name": "2010_occupancy_status", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [1413995.0, 516033.0, 314038.0, 376942.0, 176032.0]}, {"name": "2000_non-relatives", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["3694820", "1223400", "894943", "776733", "461522"]}, {"name": "2010_non-relatives", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [1318168.0, 483092.0, 301366.0, 345811.0, 163531.0]}, {"name": "2000_vacancy_status", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["62294", "18998", "5243", "16827", "8544"]}, {"name": "2010_vacancy_status", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [95827.0, 32941.0, 12672.0, 31131.0, 12501.0]}, {"name": "2000_for_rent", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["28529", "7511", "1929", "5594", "4195"]}, {"name": "2010_for_rent", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [53309.0, 13900.0, 5572.0, 12832.0, 7413.0]}, {"name": "2000_rented_not_occupied", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["9036", "1806", "714", "910", "1484"]}, {"name": "2010_rented_not_occupied", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [2367.0, 952.0, 319.0, 779.0, 252.0]}, {"name": "2000_for_sale", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["5161", "1787", "578", "1419", "683"]}, {"name": "2010_for_sale", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [10930.0, 4550.0, 2891.0, 2984.0, 1362.0]}, {"name": "2000_sold_not_occupied", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["4876", "5093", "818", "3762", "761"]}, {"name": "2010_sold_not_occupied", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [2671.0, 873.0, 603.0, 759.0, 277.0]}, {"name": "2000_seasonal_housing", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["29", "7", "50", "79", "2"]}, {"name": "2010_seasonal_housing", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [7540.0, 7737.0, 845.0, 5564.0, 1114.0]}, {"name": "2000_migrant_housing", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["14663", "2794", "1154", "5063", "1419"]}, {"name": "2010_migrant_housing", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [28.0, 13.0, 3.0, 5.0, 3.0]}],
                         {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
                             
-var gd = document.getElementById('cc8d775b-b70f-4219-8cda-004c1843c984');
+var gd = document.getElementById('371cb87e-87d9-4895-98f3-4c811d90c3c5');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -13722,7 +14013,12 @@ if (outputEl) {{
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span>        <span class="s1">&#39;H005002&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Rent_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005003&#39;</span><span class="p">:</span> <span class="s1">&#39;Rented_Not_Occupied_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005004&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Sale_Only_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005005&#39;</span><span class="p">:</span> <span class="s1">&#39;Sold_Not_Occupied_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005006&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Seasonal_Recreational_Or_Occasional_Use_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005007&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Migrant_Workers_2000&#39;</span>
 </pre></div>
 
     </div>
