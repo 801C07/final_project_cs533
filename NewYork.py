@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # California -- City Sustainability
+# # New York -- City Sustainability
 
 # In[2]:
 
@@ -28,7 +28,7 @@ import plotly.graph_objects as go
 c = Census('fb97753783c42ae57fe1a640e38fe04e921e5d1a')
 
 
-# ## Get's the 5 largest cities in California
+# ## Get's the 5 largest cities in New York
 
 # In[5]:
 
@@ -39,7 +39,7 @@ city_2010 = c.sf1.state_place(('NAME', 'H001001',
                                'H005001', 'H005002', 'H005003', 
                                'H005004', 'H005005', 'H005006', 
                                'H005007', 'P002001'), 
-                              states.CA.fips, '*', year=2010)
+                              states.NY.fips, '*', year=2010)
 c_pop_2010 = pd.DataFrame.from_records(city_2010)
 c_pop_2010_50000 = c_pop_2010.rename(columns={
         'NAME' : 'City_Name',
@@ -74,7 +74,7 @@ city_2000 = c.sf1.state_place(('NAME', 'H001001',
                                'P013001', 'H003001', 'P027001', 
                                'H005001', 'H005002', 'H005003', 
                                'H005004', 'H005005', 'H005006', 
-                               'H005007', 'P002001'), states.CA.fips, '*', year=2000)
+                               'H005007', 'P002001'), states.NY.fips, '*', year=2000)
 c_pop_2000 = pd.DataFrame.from_records(city_2000)
 c_pop_2000_50000 = c_pop_2000.rename(columns={
         'NAME' : 'City_Name',
@@ -117,37 +117,37 @@ c_pop_2010_50000.set_index('FIPS', inplace=True)
 # In[11]:
 
 
-ca_join = c_pop_2000_50000.join(c_pop_2010_50000, on='FIPS')
+ny_join = c_pop_2000_50000.join(c_pop_2010_50000, on='FIPS')
 
 
 # In[12]:
 
 
-ca_join.head()
+ny_join.head()
 
 
 # In[13]:
 
 
-ca_join['Total_Population_2000'] = ca_join['Total_Population_2000'].astype('i8')
+ny_join['Total_Population_2000'] = ny_join['Total_Population_2000'].astype('i8')
 
 
 # In[14]:
 
 
-ca_join = ca_join.nlargest(5, 'Total_Population_2000')
+ny_join = ny_join.nlargest(5, 'Total_Population_2000')
 
 
 # In[15]:
 
 
 fig = go.Figure(data=[
-    go.Bar(name='2000_pop', x=ca_join['City_Name'], y=ca_join['Total_Population_2000']),
-    go.Bar(name='2010_pop', x=ca_join['City_Name'], y=ca_join['Total_Population_2010']),
-    go.Bar(name='2000_housing', x=ca_join['City_Name'], y=ca_join['Total_Housing_2000']),
-    go.Bar(name='2010_housing', x=ca_join['City_Name'], y=ca_join['Total_Housing_2010']),
-    go.Bar(name='2000_non-relatives', x=ca_join['City_Name'], y=ca_join['Presence_of_Non-Relatives_2000']),
-    go.Bar(name='2010_non-relatives', x=ca_join['City_Name'], y=ca_join['Presence_of_Non-Relatives_2010']),
+    go.Bar(name='2000_pop', x=ny_join['City_Name'], y=ny_join['Total_Population_2000']),
+    go.Bar(name='2010_pop', x=ny_join['City_Name'], y=ny_join['Total_Population_2010']),
+    go.Bar(name='2000_housing', x=ny_join['City_Name'], y=ny_join['Total_Housing_2000']),
+    go.Bar(name='2010_housing', x=ny_join['City_Name'], y=ny_join['Total_Housing_2010']),
+    go.Bar(name='2000_non-relatives', x=ny_join['City_Name'], y=ny_join['Presence_of_Non-Relatives_2000']),
+    go.Bar(name='2010_non-relatives', x=ny_join['City_Name'], y=ny_join['Presence_of_Non-Relatives_2010']),
 ])
 fig.update_layout(barmode='group')
 fig.show()
@@ -155,7 +155,7 @@ fig.show()
 
 # ## American Community Servey
 
-# In[46]:
+# In[16]:
 
 
 acs_years = {}
@@ -163,7 +163,7 @@ for x in range(2012, 2018):
     acs_test = c.acs5.state_place(('NAME',
 'B01003_001E',
 'B00002_001E',
-'B09018_007E'), states.CA.fips, '*', year=x)
+'B09018_007E'), states.NY.fips, '*', year=x)
     acs_years[x] = pd.DataFrame.from_records(acs_test)
     print(x)
     acs_years[x] = acs_years[x].rename(columns={
@@ -174,7 +174,7 @@ for x in range(2012, 2018):
         'B09018_007E': 'Presence_of_Non-Relatives_{}'.format(x)})
 
 
-# In[47]:
+# In[17]:
 
 
 acs_years[2013].head()

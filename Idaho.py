@@ -3,13 +3,13 @@
 
 # # Idaho -- City Sustainability
 
-# In[1]:
+# In[2]:
 
 
 get_ipython().run_line_magic('pip', 'install census us')
 
 
-# In[2]:
+# In[3]:
 
 
 import pandas as pd
@@ -19,83 +19,171 @@ import matplotlib as plt
 from census import Census
 from us import states
 
+import plotly.graph_objects as go
 
-# In[3]:
+
+# In[4]:
 
 
 c = Census('fb97753783c42ae57fe1a640e38fe04e921e5d1a')
 
 
-# ### Get's the cities in Idaho that have a population greater than 50,000
+# ## Get's the 5 largest cities in Idaho
 
-# In[4]:
+# In[27]:
 
 
-city_2010 = c.sf1.state_place(('NAME', 'P001001', 'H001001', 'P013001'), states.ID.fips, '*', year=2010)
+city_2010 = c.sf1.state_place(('NAME', 'H001001', 
+                               'P013001', 'P002002', 'P002005', 
+                               'P013001', 'H003001', 'P027001', 
+                               'H005001', 'H005002', 'H005003', 
+                               'H005004', 'H005005', 'H005006', 
+                               'H005007', 'P002001'), 
+                              states.ID.fips, '*', year=2010)
 c_pop_2010 = pd.DataFrame.from_records(city_2010)
-c_pop_2010_50000 = c_pop_2010[c_pop_2010['P001001'].astype(int) >= 50000].rename(columns={'P001001': 'Total', 'H001001': 'Total Housing', 'P013001': 'Median Age'})
+c_pop_2010_50000 = c_pop_2010.rename(columns={
+        'NAME' : 'City_Name',
+        'place': 'FIPS',
+        'P002001': 'Total_Population_2010',
+        'P002002':'Total_Urban_Population_2010',
+        'P002005':'Total_Rural_Population_2010',
+        'H001001': 'Total_Housing_2010',
+        'P013001': 'Median_Age_2010',
+        'H003001': 'Occupancy_Status_For_Housing_Units_2010',
+        'P027001': 'Presence_of_Non-Relatives_2010',
+        'H005001': 'Vacancy_Status_2010',
+        'H005002': 'For_Rent_2010',
+        'H005003': 'Rented_Not_Occupied_2010',
+        'H005004': 'For_Sale_Only_2010',
+        'H005005': 'Sold_Not_Occupied_2010',
+        'H005006': 'For_Seasonal_Recreational_Or_Occasional_Use_2010',
+        'H005007': 'For_Migrant_Workers_2010'})
 
 
-# In[5]:
+# In[28]:
 
 
-c_pop_2010_50000
+c_pop_2010_50000.head()
 
 
-# In[6]:
+# In[29]:
 
 
-city_2000 = c.sf1.state_place(('NAME', 'P001001', 'H001001', 'P013001'), states.ID.fips, '*', year=2000)
+city_2000 = c.sf1.state_place(('NAME', 'H001001', 
+                               'P013001', 'P002002', 'P002005', 
+                               'P013001', 'H003001', 'P027001', 
+                               'H005001', 'H005002', 'H005003', 
+                               'H005004', 'H005005', 'H005006', 
+                               'H005007', 'P002001'), states.ID.fips, '*', year=2000)
 c_pop_2000 = pd.DataFrame.from_records(city_2000)
-c_pop_2000_50000 = c_pop_2000[c_pop_2000['P001001'].astype(int) >= 30000].rename(columns={'P001001': 'Total', 'H001001': 'Total Housing', 'P013001': 'Median Age'})
+c_pop_2000_50000 = c_pop_2000.rename(columns={
+        'NAME' : 'City_Name',
+        'place': 'FIPS',
+        'P002001': 'Total_Population_2000',
+        'P002002':'Total_Urban_Population_2000',
+        'P002005':'Total_Rural_Population_2000',
+        'H001001': 'Total_Housing_2000',
+        'P013001': 'Median_Age_2000',
+        'H003001': 'Occupancy_Status_For_Housing_Units_2000',
+        'P027001': 'Presence_of_Non-Relatives_2000',
+        'H005001': 'Vacancy_Status_2000',
+        'H005002': 'For_Rent_2000',
+        'H005003': 'Rented_Not_Occupied_2000',
+        'H005004': 'For_Sale_Only_2000',
+        'H005005': 'Sold_Not_Occupied_2000',
+        'H005006': 'For_Seasonal_Recreational_Or_Occasional_Use_2000',
+        'H005007': 'For_Migrant_Workers_2000'})
 
 
-# In[7]:
+# In[30]:
 
 
-c_pop_2000_50000
+c_pop_2000_50000.drop(columns=['City_Name', 'state'], inplace=True)
 
 
-# In[8]:
+# In[31]:
 
 
-city_joined = pd.merge(c_pop_2000_50000, c_pop_2010_50000, on='place', suffixes=('2000','2010'))
+c_pop_2000_50000.head()
 
 
-# In[9]:
+# In[32]:
 
 
-city_joined
+c_pop_2000_50000.set_index('FIPS', inplace=True)
+c_pop_2010_50000.set_index('FIPS', inplace=True)
 
 
-# In[10]:
+# In[33]:
 
 
-city_joined['Growth'] = city_joined['Total2010'].astype('float64') - city_joined['Total2000'].astype('float64')
+id_join = c_pop_2000_50000.join(c_pop_2010_50000, on='FIPS')
 
 
-# In[11]:
+# In[34]:
 
 
-city_joined['RelativeGrowth'] = city_joined['Growth']/city_joined['Total2000'].astype('float64')
+id_join.head()
 
 
-# In[12]:
+# In[35]:
 
 
-city_joined['Housing Growth'] = city_joined['Total Housing2010'].astype('float64') - city_joined['Total Housing2000'].astype('float64')
+id_join['Total_Population_2000'] = id_join['Total_Population_2000'].astype('i8')
 
 
-# In[13]:
+# In[36]:
 
 
-city_joined['Housing Relative Growth'] = city_joined['Housing Growth']/city_joined['Total Housing2000'].astype('float64')
+id_join =  id_join.nlargest(5, 'Total_Population_2000')
 
 
-# In[14]:
+# In[37]:
 
 
-city_joined
+fig = go.Figure(data=[
+    go.Bar(name='2000_pop', x=id_join['City_Name'], y=id_join['Total_Population_2000']),
+    go.Bar(name='2010_pop', x=id_join['City_Name'], y=id_join['Total_Population_2010']),
+    go.Bar(name='2000_housing', x=id_join['City_Name'], y=id_join['Total_Housing_2000']),
+    go.Bar(name='2010_housing', x=id_join['City_Name'], y=id_join['Total_Housing_2010']),
+    go.Bar(name='2000_non-relatives', x=id_join['City_Name'], y=id_join['Presence_of_Non-Relatives_2000']),
+    go.Bar(name='2010_non-relatives', x=id_join['City_Name'], y=id_join['Presence_of_Non-Relatives_2010']),
+])
+fig.update_layout(barmode='group')
+fig.show()
+
+
+# ## American Community Servey
+
+# In[46]:
+
+
+acs_years = {}
+for x in range(2012, 2018):
+    acs_test = c.acs5.state_place(('NAME',
+'B01003_001E',
+'B00002_001E',
+'B09018_007E'), states.ID.fips, '*', year=x)
+    acs_years[x] = pd.DataFrame.from_records(acs_test)
+    print(x)
+    acs_years[x] = acs_years[x].rename(columns={
+        'NAME' : 'City_Name',
+        'place': 'FIPS',
+        'B01003_001E': 'Total_Population_{}'.format(x),
+        'B00002_001E': 'Total_Housing_{}'.format(x),
+        'B09018_007E': 'Presence_of_Non-Relatives_{}'.format(x)})
+
+
+# In[47]:
+
+
+acs_years[2013].head()
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
