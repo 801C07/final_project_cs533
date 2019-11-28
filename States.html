@@ -13116,13 +13116,20 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="California----City-Sustainability">California -- City Sustainability<a class="anchor-link" href="#California----City-Sustainability">&#182;</a></h1>
+<h1 id="Final-Project---Idaho-Policy-Institute-5">Final Project - Idaho Policy Institute 5<a class="anchor-link" href="#Final-Project---Idaho-Policy-Institute-5">&#182;</a></h1><h2 id="Ryan-Pacheco,-Ashley-Gilbert,-Ben-Whitehead">Ryan Pacheco, Ashley Gilbert, Ben Whitehead<a class="anchor-link" href="#Ryan-Pacheco,-Ashley-Gilbert,-Ben-Whitehead">&#182;</a></h2><p>Our goal is to identify characteristics which make a city sustainable, then classify cities based on whether they are growing sustainably or not. We will be looking at the cities in Idaho, California, and New York (state) with a population over 50,000.</p>
+<h2 id="Initial-Setup">Initial Setup<a class="anchor-link" href="#Initial-Setup">&#182;</a></h2><p>We will start bby loading all of our data sources:</p>
+<ul>
+<li>US Census Data</li>
+<li>American Community Survey Data</li>
+<li>Greenhouse Gas Data (procured by the EPA)</li>
+</ul>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">pip</span> install census us
@@ -13142,15 +13149,15 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Requirement already satisfied: census in /Users/Ryan/anaconda3/lib/python3.7/site-packages (0.8.13)
-Requirement already satisfied: us in /Users/Ryan/anaconda3/lib/python3.7/site-packages (1.0.0)
-Requirement already satisfied: future in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from census) (0.17.1)
-Requirement already satisfied: requests&gt;=1.1.0 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from census) (2.22.0)
-Requirement already satisfied: jellyfish==0.5.6 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from us) (0.5.6)
-Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (3.0.4)
-Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (2.8)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (2019.9.11)
-Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (1.24.2)
+<pre>Requirement already satisfied: census in /anaconda3/lib/python3.7/site-packages (0.8.13)
+Requirement already satisfied: us in /anaconda3/lib/python3.7/site-packages (1.0.0)
+Requirement already satisfied: requests&gt;=1.1.0 in /anaconda3/lib/python3.7/site-packages (from census) (2.22.0)
+Requirement already satisfied: future in /anaconda3/lib/python3.7/site-packages (from census) (0.17.1)
+Requirement already satisfied: jellyfish==0.5.6 in /anaconda3/lib/python3.7/site-packages (from us) (0.5.6)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (2019.9.11)
+Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (2.8)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (1.24.2)
+Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (3.0.4)
 Note: you may need to restart the kernel to use updated packages.
 </pre>
 </div>
@@ -13162,12 +13169,13 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">census</span> <span class="k">import</span> <span class="n">Census</span>
 <span class="kn">from</span> <span class="nn">us</span> <span class="k">import</span> <span class="n">states</span>
@@ -13182,13 +13190,152 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="s1">&#39;fb97753783c42ae57fe1a640e38fe04e921e5d1a&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#load census data using API key</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Census</span><span class="p">(</span><span class="s1">&#39;fb97753783c42ae57fe1a640e38fe04e921e5d1a&#39;</span><span class="p">)</span>
+
+<span class="c1">#American Community Survey Data for California</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">acs_years_ca</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">2018</span><span class="p">):</span>
+    <span class="n">acs_test</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">acs5</span><span class="o">.</span><span class="n">state_place</span><span class="p">((</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;B01003_001E&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;B00002_001E&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;B09018_007E&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;B01002_001E&#39;</span><span class="p">),</span> <span class="n">states</span><span class="o">.</span><span class="n">CA</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">acs_years_ca</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">acs_test</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">acs_years_ca</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">acs_years_ca</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;NAME&#39;</span> <span class="p">:</span> <span class="s1">&#39;City_Name&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;B01003_001E&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Population_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+        <span class="s1">&#39;B00002_001E&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Housing_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+        <span class="s1">&#39;B09018_007E&#39;</span><span class="p">:</span> <span class="s1">&#39;Presence_of_Non-Relatives_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+        <span class="s1">&#39;B01002_001E&#39;</span><span class="p">:</span> <span class="s1">&#39;Median_Age_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+    <span class="p">})</span>
+    <span class="n">acs_years_ca</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">acs_years_ca</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">acs_years_ca</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">acs_years_ca</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Total_Population_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+
+<span class="c1">#American Community Survey Data for New York</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">acs_years_ny</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">2018</span><span class="p">):</span>
+    <span class="n">acs_test</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">acs5</span><span class="o">.</span><span class="n">state_place</span><span class="p">((</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;B01003_001E&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;B00002_001E&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;B09018_007E&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;B01002_001E&#39;</span><span class="p">),</span> <span class="n">states</span><span class="o">.</span><span class="n">NY</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">acs_years_ny</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">acs_test</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">acs_years_ny</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">acs_years_ny</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;NAME&#39;</span> <span class="p">:</span> <span class="s1">&#39;City_Name&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;B01003_001E&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Population_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+        <span class="s1">&#39;B00002_001E&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Housing_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+        <span class="s1">&#39;B09018_007E&#39;</span><span class="p">:</span> <span class="s1">&#39;Presence_of_Non-Relatives_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+        <span class="s1">&#39;B01002_001E&#39;</span><span class="p">:</span> <span class="s1">&#39;Median_Age_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+    <span class="p">})</span>
+    <span class="n">acs_years_ny</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">acs_years_ny</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">acs_years_ny</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">acs_years_ny</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Total_Population_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+
+<span class="c1">#American Community Survey Data for Idaho</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">acs_years_id</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">2018</span><span class="p">):</span>
+    <span class="n">acs_test</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">acs5</span><span class="o">.</span><span class="n">state_place</span><span class="p">((</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;B01003_001E&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;B00002_001E&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;B09018_007E&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;B01002_001E&#39;</span><span class="p">),</span> <span class="n">states</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">acs_years_id</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">acs_test</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">acs_years_id</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">acs_years_id</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;NAME&#39;</span> <span class="p">:</span> <span class="s1">&#39;City_Name&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;B01003_001E&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Population_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+        <span class="s1">&#39;B00002_001E&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Housing_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+        <span class="s1">&#39;B09018_007E&#39;</span><span class="p">:</span> <span class="s1">&#39;Presence_of_Non-Relatives_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+        <span class="s1">&#39;B01002_001E&#39;</span><span class="p">:</span> <span class="s1">&#39;Median_Age_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+    <span class="p">})</span>
+    <span class="n">acs_years_id</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">acs_years_id</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">acs_years_id</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">acs_years_id</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Total_Population_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+
+<span class="c1">#Greenhouse Gas Data</span>
+<span class="n">ghg_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;data/2018_data_summary_spreadsheets&#39;</span><span class="p">):</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/2018_data_summary_spreadsheets/&#39;</span><span class="o">+</span><span class="n">f</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">temp</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>    
+    <span class="n">ghg_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">temp</span><span class="p">,</span> <span class="n">ghg_data</span><span class="p">])</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2012
+2013
+2014
+2015
+2016
+2017
+2012
+2013
+2014
+2015
+2016
+2017
+2012
+2013
+2014
+2015
+2016
+2017
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>//anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:85: FutureWarning:
+
+Sorting because non-concatenation axis is not aligned. A future version
+of pandas will change to not sort by default.
+
+To accept the future behavior, pass &#39;sort=False&#39;.
+
+To retain the current behavior and silence the warning, pass &#39;sort=True&#39;.
+
+
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -13196,24 +13343,39 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Get's-the-5-largest-cities-in-California">Get's the 5 largest cities in California<a class="anchor-link" href="#Get's-the-5-largest-cities-in-California">&#182;</a></h2>
+<p>Now that all of our data is loaded, we will work on putting it all together for analysis</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2010</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">((</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;H001001&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;P002002&#39;</span><span class="p">,</span> <span class="s1">&#39;P002005&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;H003001&#39;</span><span class="p">,</span> <span class="s1">&#39;P027001&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005001&#39;</span><span class="p">,</span> <span class="s1">&#39;H005002&#39;</span><span class="p">,</span> <span class="s1">&#39;H005003&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005004&#39;</span><span class="p">,</span> <span class="s1">&#39;H005005&#39;</span><span class="p">,</span> <span class="s1">&#39;H005006&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005007&#39;</span><span class="p">,</span> <span class="s1">&#39;P002001&#39;</span><span class="p">),</span> 
-                              <span class="n">states</span><span class="o">.</span><span class="n">CA</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2010</span><span class="p">)</span>
-<span class="n">c_pop_2010</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">city_2010</span><span class="p">)</span>
-<span class="n">c_pop_2010_50000</span> <span class="o">=</span> <span class="n">c_pop_2010</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#common variables used for working with the census data.</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NAME&#39;</span> <span class="p">,</span><span class="s1">&#39;P002001&#39;</span><span class="p">,</span><span class="s1">&#39;P002002&#39;</span><span class="p">,</span><span class="s1">&#39;P002005&#39;</span><span class="p">,</span><span class="s1">&#39;H001001&#39;</span><span class="p">,</span><span class="s1">&#39;P013001&#39;</span><span class="p">,</span><span class="s1">&#39;H003001&#39;</span><span class="p">,</span><span class="s1">&#39;P027001&#39;</span><span class="p">,</span><span class="s1">&#39;H005001&#39;</span><span class="p">,</span><span class="s1">&#39;H005002&#39;</span><span class="p">,</span><span class="s1">&#39;H005003&#39;</span><span class="p">,</span><span class="s1">&#39;H005004&#39;</span><span class="p">,</span><span class="s1">&#39;H005005&#39;</span><span class="p">,</span><span class="s1">&#39;H005006&#39;</span><span class="p">,</span><span class="s1">&#39;H005007&#39;</span><span class="p">]</span>
+
+<span class="n">renames_2000</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;NAME&#39;</span> <span class="p">:</span> <span class="s1">&#39;City_Name&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P002001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P002002&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Urban_Population_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P002005&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Rural_Population_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H001001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Housing_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P013001&#39;</span><span class="p">:</span> <span class="s1">&#39;Median_Age_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H003001&#39;</span><span class="p">:</span> <span class="s1">&#39;Occupancy_Status_For_Housing_Units_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;P027001&#39;</span><span class="p">:</span> <span class="s1">&#39;Presence_of_Non-Relatives_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005001&#39;</span><span class="p">:</span> <span class="s1">&#39;Vacancy_Status_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005002&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Rent_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005003&#39;</span><span class="p">:</span> <span class="s1">&#39;Rented_Not_Occupied_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005004&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Sale_Only_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005005&#39;</span><span class="p">:</span> <span class="s1">&#39;Sold_Not_Occupied_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005006&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Seasonal_Recreational_Or_Occasional_Use_2000&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;H005007&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Migrant_Workers_2000&#39;</span>
+<span class="p">}</span>
+
+<span class="n">renames_2010</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;NAME&#39;</span> <span class="p">:</span> <span class="s1">&#39;City_Name&#39;</span><span class="p">,</span>
         <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span>
         <span class="s1">&#39;P002001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Population_2010&#39;</span><span class="p">,</span>
@@ -13229,7 +13391,37 @@ Note: you may need to restart the kernel to use updated packages.
         <span class="s1">&#39;H005004&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Sale_Only_2010&#39;</span><span class="p">,</span>
         <span class="s1">&#39;H005005&#39;</span><span class="p">:</span> <span class="s1">&#39;Sold_Not_Occupied_2010&#39;</span><span class="p">,</span>
         <span class="s1">&#39;H005006&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Seasonal_Recreational_Or_Occasional_Use_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005007&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Migrant_Workers_2010&#39;</span><span class="p">})</span>
+        <span class="s1">&#39;H005007&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Migrant_Workers_2010&#39;</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Merge-data-and-start-analysis">Merge data and start analysis<a class="anchor-link" href="#Merge-data-and-start-analysis">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="California">California<a class="anchor-link" href="#California">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2010</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> 
+                              <span class="n">states</span><span class="o">.</span><span class="n">CA</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2010</span><span class="p">)</span>
+<span class="n">c_pop_2010</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">city_2010</span><span class="p">)</span>
+<span class="n">c_pop_2010_50000</span> <span class="o">=</span> <span class="n">c_pop_2010</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">renames_2010</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13414,30 +13606,207 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2000</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">((</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;H001001&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;P002002&#39;</span><span class="p">,</span> <span class="s1">&#39;P002005&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;H003001&#39;</span><span class="p">,</span> <span class="s1">&#39;P027001&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005001&#39;</span><span class="p">,</span> <span class="s1">&#39;H005002&#39;</span><span class="p">,</span> <span class="s1">&#39;H005003&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005004&#39;</span><span class="p">,</span> <span class="s1">&#39;H005005&#39;</span><span class="p">,</span> <span class="s1">&#39;H005006&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005007&#39;</span><span class="p">,</span> <span class="s1">&#39;P002001&#39;</span><span class="p">),</span> <span class="n">states</span><span class="o">.</span><span class="n">CA</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ghg_data</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ghg_data</span><span class="p">[</span><span class="s1">&#39;City&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="n">ghg_data</span><span class="p">[</span><span class="s1">&#39;State&#39;</span><span class="p">]</span>
+<span class="n">ghg_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Address</th>
+      <th>Adipic Acid Production</th>
+      <th>Aluminum Production</th>
+      <th>Ammonia Manufacturing</th>
+      <th>Biogenic CO2 emissions (metric tons)</th>
+      <th>CO2 emissions (non-biogenic)</th>
+      <th>Cement Production</th>
+      <th>City</th>
+      <th>County</th>
+      <th>Does the facility employ continuous emissions monitoring?</th>
+      <th>...</th>
+      <th>State</th>
+      <th>Stationary Combustion</th>
+      <th>Titanium Dioxide Production</th>
+      <th>Total reported direct emissions</th>
+      <th>Underground Coal Mines</th>
+      <th>Very Short-lived Compounds emissions</th>
+      <th>Year</th>
+      <th>Zinc Production</th>
+      <th>Zip Code</th>
+      <th>City_Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3820 SAM RAYBURN HIGHWAY</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>MELISSA</td>
+      <td>COLLIN COUNTY</td>
+      <td>N</td>
+      <td>...</td>
+      <td>TX</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>250497.500</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2017</td>
+      <td>NaN</td>
+      <td>75454</td>
+      <td>MELISSA,TX</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4200 S. Hwy 15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Hazard</td>
+      <td>PERRY COUNTY</td>
+      <td>N</td>
+      <td>...</td>
+      <td>KY</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>218699.250</td>
+      <td>218699.25</td>
+      <td>NaN</td>
+      <td>2017</td>
+      <td>NaN</td>
+      <td>40701</td>
+      <td>Hazard,KY</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1845 S. KY HWY 15</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Hazard</td>
+      <td>PERRY</td>
+      <td>N</td>
+      <td>...</td>
+      <td>KY</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>70265.000</td>
+      <td>70265.00</td>
+      <td>NaN</td>
+      <td>2017</td>
+      <td>NaN</td>
+      <td>41701</td>
+      <td>Hazard,KY</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>22845 Highway 33</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9120.1</td>
+      <td>NaN</td>
+      <td>McKittrick</td>
+      <td>NaN</td>
+      <td>N</td>
+      <td>...</td>
+      <td>CA</td>
+      <td>9115.416</td>
+      <td>NaN</td>
+      <td>9298.916</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2017</td>
+      <td>NaN</td>
+      <td>93251</td>
+      <td>McKittrick,CA</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>730 3rd Avenue</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>52645.5</td>
+      <td>NaN</td>
+      <td>BROOKLYN</td>
+      <td>Kings</td>
+      <td>N</td>
+      <td>...</td>
+      <td>NY</td>
+      <td>65.000</td>
+      <td>NaN</td>
+      <td>52698.656</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2017</td>
+      <td>NaN</td>
+      <td>11232</td>
+      <td>BROOKLYN,NY</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 68 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2000</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">states</span><span class="o">.</span><span class="n">CA</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
 <span class="n">c_pop_2000</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">city_2000</span><span class="p">)</span>
-<span class="n">c_pop_2000_50000</span> <span class="o">=</span> <span class="n">c_pop_2000</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-        <span class="s1">&#39;NAME&#39;</span> <span class="p">:</span> <span class="s1">&#39;City_Name&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002002&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Urban_Population_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002005&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Rural_Population_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H001001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Housing_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P013001&#39;</span><span class="p">:</span> <span class="s1">&#39;Median_Age_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H003001&#39;</span><span class="p">:</span> <span class="s1">&#39;Occupancy_Status_For_Housing_Units_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P027001&#39;</span><span class="p">:</span> <span class="s1">&#39;Presence_of_Non-Relatives_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005001&#39;</span><span class="p">:</span> <span class="s1">&#39;Vacancy_Status_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005002&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Rent_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005003&#39;</span><span class="p">:</span> <span class="s1">&#39;Rented_Not_Occupied_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005004&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Sale_Only_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005005&#39;</span><span class="p">:</span> <span class="s1">&#39;Sold_Not_Occupied_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005006&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Seasonal_Recreational_Or_Occasional_Use_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005007&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Migrant_Workers_2000&#39;</span><span class="p">})</span>
+<span class="n">c_pop_2000_50000</span> <span class="o">=</span> <span class="n">c_pop_2000</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">renames_2000</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13447,7 +13816,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -13460,7 +13829,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13476,7 +13845,7 @@ Note: you may need to restart the kernel to use updated packages.
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[9]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -13620,7 +13989,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -13634,7 +14003,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ca_join</span> <span class="o">=</span> <span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c_pop_2010_50000</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;FIPS&#39;</span><span class="p">)</span>
@@ -13647,7 +14016,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ca_join</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13663,7 +14032,7 @@ Note: you may need to restart the kernel to use updated packages.
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[12]:</div>
+    <div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -13868,7 +14237,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ca_join</span><span class="p">[</span><span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ca_join</span><span class="p">[</span><span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;i8&#39;</span><span class="p">)</span>
@@ -13881,7 +14250,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ca_join</span> <span class="o">=</span> <span class="n">ca_join</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">)</span>
@@ -13894,7 +14263,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span>
@@ -13958,20 +14327,20 @@ Note: you may need to restart the kernel to use updated packages.
 <div>
         
         
-            <div id="db46cb3c-6e60-4b92-8e0e-faf87416455d" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <div id="6c7a074a-70c9-4a84-84c5-8a8f368bce61" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     
-                if (document.getElementById("db46cb3c-6e60-4b92-8e0e-faf87416455d")) {
+                if (document.getElementById("6c7a074a-70c9-4a84-84c5-8a8f368bce61")) {
                     Plotly.newPlot(
-                        'db46cb3c-6e60-4b92-8e0e-faf87416455d',
+                        '6c7a074a-70c9-4a84-84c5-8a8f368bce61',
                         [{"name": "2000_pop", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [3694820, 1223400, 894943, 776733, 461522]}, {"name": "2010_pop", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [3792621.0, 1307402.0, 945942.0, 805235.0, 462257.0]}, {"name": "2000_housing", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["1337706", "469689", "281841", "346527", "171632"]}, {"name": "2010_housing", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [1413995.0, 516033.0, 314038.0, 376942.0, 176032.0]}, {"name": "2000_non-relatives", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["3694820", "1223400", "894943", "776733", "461522"]}, {"name": "2010_non-relatives", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [1318168.0, 483092.0, 301366.0, 345811.0, 163531.0]}],
                         {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
                             
-var gd = document.getElementById('db46cb3c-6e60-4b92-8e0e-faf87416455d');
+var gd = document.getElementById('6c7a074a-70c9-4a84-84c5-8a8f368bce61');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -14015,34 +14384,12 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2010</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">((</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;H001001&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;P002002&#39;</span><span class="p">,</span> <span class="s1">&#39;P002005&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;H003001&#39;</span><span class="p">,</span> <span class="s1">&#39;P027001&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005001&#39;</span><span class="p">,</span> <span class="s1">&#39;H005002&#39;</span><span class="p">,</span> <span class="s1">&#39;H005003&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005004&#39;</span><span class="p">,</span> <span class="s1">&#39;H005005&#39;</span><span class="p">,</span> <span class="s1">&#39;H005006&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005007&#39;</span><span class="p">,</span> <span class="s1">&#39;P002001&#39;</span><span class="p">),</span> 
-                              <span class="n">states</span><span class="o">.</span><span class="n">NY</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2010</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2010</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">states</span><span class="o">.</span><span class="n">NY</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2010</span><span class="p">)</span>
 <span class="n">c_pop_2010</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">city_2010</span><span class="p">)</span>
-<span class="n">c_pop_2010_50000</span> <span class="o">=</span> <span class="n">c_pop_2010</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-        <span class="s1">&#39;NAME&#39;</span> <span class="p">:</span> <span class="s1">&#39;City_Name&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Population_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002002&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Urban_Population_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002005&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Rural_Population_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H001001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Housing_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P013001&#39;</span><span class="p">:</span> <span class="s1">&#39;Median_Age_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H003001&#39;</span><span class="p">:</span> <span class="s1">&#39;Occupancy_Status_For_Housing_Units_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P027001&#39;</span><span class="p">:</span> <span class="s1">&#39;Presence_of_Non-Relatives_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005001&#39;</span><span class="p">:</span> <span class="s1">&#39;Vacancy_Status_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005002&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Rent_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005003&#39;</span><span class="p">:</span> <span class="s1">&#39;Rented_Not_Occupied_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005004&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Sale_Only_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005005&#39;</span><span class="p">:</span> <span class="s1">&#39;Sold_Not_Occupied_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005006&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Seasonal_Recreational_Or_Occasional_Use_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005007&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Migrant_Workers_2010&#39;</span><span class="p">})</span>
+<span class="n">c_pop_2010_50000</span> <span class="o">=</span> <span class="n">c_pop_2010</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">renames_2010</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14052,7 +14399,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2010_50000</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -14068,7 +14415,7 @@ if (outputEl) {{
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[17]:</div>
+    <div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -14224,33 +14571,12 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2000</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">((</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;H001001&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;P002002&#39;</span><span class="p">,</span> <span class="s1">&#39;P002005&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;H003001&#39;</span><span class="p">,</span> <span class="s1">&#39;P027001&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005001&#39;</span><span class="p">,</span> <span class="s1">&#39;H005002&#39;</span><span class="p">,</span> <span class="s1">&#39;H005003&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005004&#39;</span><span class="p">,</span> <span class="s1">&#39;H005005&#39;</span><span class="p">,</span> <span class="s1">&#39;H005006&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005007&#39;</span><span class="p">,</span> <span class="s1">&#39;P002001&#39;</span><span class="p">),</span> <span class="n">states</span><span class="o">.</span><span class="n">NY</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2000</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">states</span><span class="o">.</span><span class="n">NY</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
 <span class="n">c_pop_2000</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">city_2000</span><span class="p">)</span>
-<span class="n">c_pop_2000_50000</span> <span class="o">=</span> <span class="n">c_pop_2000</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-        <span class="s1">&#39;NAME&#39;</span> <span class="p">:</span> <span class="s1">&#39;City_Name&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002002&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Urban_Population_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002005&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Rural_Population_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H001001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Housing_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P013001&#39;</span><span class="p">:</span> <span class="s1">&#39;Median_Age_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H003001&#39;</span><span class="p">:</span> <span class="s1">&#39;Occupancy_Status_For_Housing_Units_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P027001&#39;</span><span class="p">:</span> <span class="s1">&#39;Presence_of_Non-Relatives_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005001&#39;</span><span class="p">:</span> <span class="s1">&#39;Vacancy_Status_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005002&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Rent_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005003&#39;</span><span class="p">:</span> <span class="s1">&#39;Rented_Not_Occupied_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005004&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Sale_Only_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005005&#39;</span><span class="p">:</span> <span class="s1">&#39;Sold_Not_Occupied_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005006&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Seasonal_Recreational_Or_Occasional_Use_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005007&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Migrant_Workers_2000&#39;</span><span class="p">})</span>
+<span class="n">c_pop_2000_50000</span> <span class="o">=</span> <span class="n">c_pop_2000</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">renames_2000</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14260,7 +14586,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -14273,7 +14599,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -14289,7 +14615,7 @@ if (outputEl) {{
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[20]:</div>
+    <div class="prompt output_prompt">Out[21]:</div>
 
 
 
@@ -14433,7 +14759,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -14447,7 +14773,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ny_join</span> <span class="o">=</span> <span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c_pop_2010_50000</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;FIPS&#39;</span><span class="p">)</span>
@@ -14460,7 +14786,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ny_join</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -14476,7 +14802,7 @@ if (outputEl) {{
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[23]:</div>
+    <div class="prompt output_prompt">Out[24]:</div>
 
 
 
@@ -14681,7 +15007,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ny_join</span><span class="p">[</span><span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ny_join</span><span class="p">[</span><span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;i8&#39;</span><span class="p">)</span>
@@ -14694,7 +15020,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ny_join</span> <span class="o">=</span> <span class="n">ny_join</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">)</span>
@@ -14707,7 +15033,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span>
@@ -14740,20 +15066,20 @@ if (outputEl) {{
 <div>
         
         
-            <div id="89958cab-a3c0-417b-bc66-a1867607b16a" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <div id="767cf034-4b66-437c-8f15-7cc377b8b93b" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     
-                if (document.getElementById("89958cab-a3c0-417b-bc66-a1867607b16a")) {
+                if (document.getElementById("767cf034-4b66-437c-8f15-7cc377b8b93b")) {
                     Plotly.newPlot(
-                        '89958cab-a3c0-417b-bc66-a1867607b16a',
+                        '767cf034-4b66-437c-8f15-7cc377b8b93b',
                         [{"name": "2000_pop", "type": "bar", "x": ["New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [8008278, 292648, 219773, 196086, 147306]}, {"name": "2010_pop", "type": "bar", "x": ["New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [8175133.0, 261310.0, 210565.0, 195976.0, 145170.0]}, {"name": "2000_housing", "type": "bar", "x": ["New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["3200912", "145574", "99789", "77589", "68192"]}, {"name": "2010_housing", "type": "bar", "x": ["New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [3371062.0, 133444.0, 97158.0, 80389.0, 64356.0]}, {"name": "2000_non-relatives", "type": "bar", "x": ["New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["8008278", "292648", "219773", "196086", "147306"]}, {"name": "2010_non-relatives", "type": "bar", "x": ["New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [3109784.0, 112536.0, 87027.0, 74550.0, 57355.0]}],
                         {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
                             
-var gd = document.getElementById('89958cab-a3c0-417b-bc66-a1867607b16a');
+var gd = document.getElementById('767cf034-4b66-437c-8f15-7cc377b8b93b');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -14797,34 +15123,12 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2010</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">((</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;H001001&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;P002002&#39;</span><span class="p">,</span> <span class="s1">&#39;P002005&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;H003001&#39;</span><span class="p">,</span> <span class="s1">&#39;P027001&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005001&#39;</span><span class="p">,</span> <span class="s1">&#39;H005002&#39;</span><span class="p">,</span> <span class="s1">&#39;H005003&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005004&#39;</span><span class="p">,</span> <span class="s1">&#39;H005005&#39;</span><span class="p">,</span> <span class="s1">&#39;H005006&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005007&#39;</span><span class="p">,</span> <span class="s1">&#39;P002001&#39;</span><span class="p">),</span> 
-                              <span class="n">states</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2010</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2010</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">states</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2010</span><span class="p">)</span>
 <span class="n">c_pop_2010</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">city_2010</span><span class="p">)</span>
-<span class="n">c_pop_2010_50000</span> <span class="o">=</span> <span class="n">c_pop_2010</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-        <span class="s1">&#39;NAME&#39;</span> <span class="p">:</span> <span class="s1">&#39;City_Name&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Population_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002002&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Urban_Population_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002005&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Rural_Population_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H001001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Housing_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P013001&#39;</span><span class="p">:</span> <span class="s1">&#39;Median_Age_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H003001&#39;</span><span class="p">:</span> <span class="s1">&#39;Occupancy_Status_For_Housing_Units_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P027001&#39;</span><span class="p">:</span> <span class="s1">&#39;Presence_of_Non-Relatives_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005001&#39;</span><span class="p">:</span> <span class="s1">&#39;Vacancy_Status_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005002&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Rent_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005003&#39;</span><span class="p">:</span> <span class="s1">&#39;Rented_Not_Occupied_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005004&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Sale_Only_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005005&#39;</span><span class="p">:</span> <span class="s1">&#39;Sold_Not_Occupied_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005006&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Seasonal_Recreational_Or_Occasional_Use_2010&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005007&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Migrant_Workers_2010&#39;</span><span class="p">})</span>
+<span class="n">c_pop_2010_50000</span> <span class="o">=</span> <span class="n">c_pop_2010</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">renames_2010</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14834,7 +15138,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2010_50000</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -14850,7 +15154,7 @@ if (outputEl) {{
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[28]:</div>
+    <div class="prompt output_prompt">Out[29]:</div>
 
 
 
@@ -15006,33 +15310,12 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2000</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">((</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;H001001&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;P002002&#39;</span><span class="p">,</span> <span class="s1">&#39;P002005&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;P013001&#39;</span><span class="p">,</span> <span class="s1">&#39;H003001&#39;</span><span class="p">,</span> <span class="s1">&#39;P027001&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005001&#39;</span><span class="p">,</span> <span class="s1">&#39;H005002&#39;</span><span class="p">,</span> <span class="s1">&#39;H005003&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005004&#39;</span><span class="p">,</span> <span class="s1">&#39;H005005&#39;</span><span class="p">,</span> <span class="s1">&#39;H005006&#39;</span><span class="p">,</span> 
-                               <span class="s1">&#39;H005007&#39;</span><span class="p">,</span> <span class="s1">&#39;P002001&#39;</span><span class="p">),</span> <span class="n">states</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">city_2000</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">sf1</span><span class="o">.</span><span class="n">state_place</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">states</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
 <span class="n">c_pop_2000</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">city_2000</span><span class="p">)</span>
-<span class="n">c_pop_2000_50000</span> <span class="o">=</span> <span class="n">c_pop_2000</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-        <span class="s1">&#39;NAME&#39;</span> <span class="p">:</span> <span class="s1">&#39;City_Name&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002002&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Urban_Population_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P002005&#39;</span><span class="p">:</span><span class="s1">&#39;Total_Rural_Population_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H001001&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Housing_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P013001&#39;</span><span class="p">:</span> <span class="s1">&#39;Median_Age_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H003001&#39;</span><span class="p">:</span> <span class="s1">&#39;Occupancy_Status_For_Housing_Units_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;P027001&#39;</span><span class="p">:</span> <span class="s1">&#39;Presence_of_Non-Relatives_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005001&#39;</span><span class="p">:</span> <span class="s1">&#39;Vacancy_Status_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005002&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Rent_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005003&#39;</span><span class="p">:</span> <span class="s1">&#39;Rented_Not_Occupied_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005004&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Sale_Only_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005005&#39;</span><span class="p">:</span> <span class="s1">&#39;Sold_Not_Occupied_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005006&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Seasonal_Recreational_Or_Occasional_Use_2000&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;H005007&#39;</span><span class="p">:</span> <span class="s1">&#39;For_Migrant_Workers_2000&#39;</span><span class="p">})</span>
+<span class="n">c_pop_2000_50000</span> <span class="o">=</span> <span class="n">c_pop_2000</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">renames_2000</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15042,7 +15325,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -15055,7 +15338,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -15071,7 +15354,7 @@ if (outputEl) {{
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[31]:</div>
+    <div class="prompt output_prompt">Out[32]:</div>
 
 
 
@@ -15215,7 +15498,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -15229,7 +15512,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">id_join</span> <span class="o">=</span> <span class="n">c_pop_2000_50000</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c_pop_2010_50000</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;FIPS&#39;</span><span class="p">)</span>
@@ -15242,7 +15525,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">id_join</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -15258,7 +15541,7 @@ if (outputEl) {{
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[34]:</div>
+    <div class="prompt output_prompt">Out[35]:</div>
 
 
 
@@ -15463,7 +15746,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">id_join</span><span class="p">[</span><span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">id_join</span><span class="p">[</span><span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;i8&#39;</span><span class="p">)</span>
@@ -15476,7 +15759,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">id_join</span> <span class="o">=</span>  <span class="n">id_join</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">)</span>
@@ -15489,7 +15772,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span>
@@ -15522,20 +15805,20 @@ if (outputEl) {{
 <div>
         
         
-            <div id="f45ac99e-72e8-4aa5-b752-f8e3abf1fdad" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <div id="e139d03d-0f31-4c85-ab06-fa4e749a88f6" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     
-                if (document.getElementById("f45ac99e-72e8-4aa5-b752-f8e3abf1fdad")) {
+                if (document.getElementById("e139d03d-0f31-4c85-ab06-fa4e749a88f6")) {
                     Plotly.newPlot(
-                        'f45ac99e-72e8-4aa5-b752-f8e3abf1fdad',
+                        'e139d03d-0f31-4c85-ab06-fa4e749a88f6',
                         [{"name": "2000_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho"], "y": [185787, 51867, 51466, 50730, 34919]}, {"name": "2010_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho"], "y": [205671.0, 81557.0, 54255.0, 56813.0, 75092.0]}, {"name": "2000_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho"], "y": ["77850", "19379", "20627", "19771", "12293"]}, {"name": "2010_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho"], "y": [92700.0, 30507.0, 22404.0, 22977.0, 26674.0]}, {"name": "2000_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho"], "y": ["185787", "51867", "51466", "50730", "34919"]}, {"name": "2010_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho"], "y": [85704.0, 27729.0, 20832.0, 21203.0, 25302.0]}],
                         {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
                             
-var gd = document.getElementById('f45ac99e-72e8-4aa5-b752-f8e3abf1fdad');
+var gd = document.getElementById('e139d03d-0f31-4c85-ab06-fa4e749a88f6');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -15572,7 +15855,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">three_state_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">id_join</span><span class="p">,</span> <span class="n">ca_join</span><span class="p">,</span> <span class="n">ny_join</span><span class="p">])</span>
@@ -15585,7 +15868,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">three_state_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -15598,7 +15881,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">three_state_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -15614,7 +15897,7 @@ if (outputEl) {{
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[40]:</div>
+    <div class="prompt output_prompt">Out[41]:</div>
 
 
 
@@ -15795,7 +16078,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span>
@@ -15828,20 +16111,20 @@ if (outputEl) {{
 <div>
         
         
-            <div id="5ea9c2e1-204a-4b96-9848-f0bf7566d92f" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <div id="ebfc9db4-fed7-4320-a1f4-297429320a73" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     
-                if (document.getElementById("5ea9c2e1-204a-4b96-9848-f0bf7566d92f")) {
+                if (document.getElementById("ebfc9db4-fed7-4320-a1f4-297429320a73")) {
                     Plotly.newPlot(
-                        '5ea9c2e1-204a-4b96-9848-f0bf7566d92f',
+                        'ebfc9db4-fed7-4320-a1f4-297429320a73',
                         [{"name": "2000_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [185787, 51867, 51466, 50730, 34919, 3694820, 1223400, 894943, 776733, 461522, 8008278, 292648, 219773, 196086, 147306]}, {"name": "2010_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [205671.0, 81557.0, 54255.0, 56813.0, 75092.0, 3792621.0, 1307402.0, 945942.0, 805235.0, 462257.0, 8175133.0, 261310.0, 210565.0, 195976.0, 145170.0]}, {"name": "2000_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["77850", "19379", "20627", "19771", "12293", "1337706", "469689", "281841", "346527", "171632", "3200912", "145574", "99789", "77589", "68192"]}, {"name": "2010_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [92700.0, 30507.0, 22404.0, 22977.0, 26674.0, 1413995.0, 516033.0, 314038.0, 376942.0, 176032.0, 3371062.0, 133444.0, 97158.0, 80389.0, 64356.0]}, {"name": "2000_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["185787", "51867", "51466", "50730", "34919", "3694820", "1223400", "894943", "776733", "461522", "8008278", "292648", "219773", "196086", "147306"]}, {"name": "2010_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [85704.0, 27729.0, 20832.0, 21203.0, 25302.0, 1318168.0, 483092.0, 301366.0, 345811.0, 163531.0, 3109784.0, 112536.0, 87027.0, 74550.0, 57355.0]}],
                         {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
                             
-var gd = document.getElementById('5ea9c2e1-204a-4b96-9848-f0bf7566d92f');
+var gd = document.getElementById('ebfc9db4-fed7-4320-a1f4-297429320a73');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -15888,7 +16171,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">three_state_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">three_state_df</span><span class="p">[</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">]</span> <span class="o">==</span><span class="s1">&#39;Los Angeles city, California&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
@@ -15902,7 +16185,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span>
@@ -15935,20 +16218,20 @@ if (outputEl) {{
 <div>
         
         
-            <div id="c82cabe3-8fd1-429c-9460-1a6be63ecd01" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <div id="9171ea63-7f82-4830-8a9b-9dca28ab1e88" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     
-                if (document.getElementById("c82cabe3-8fd1-429c-9460-1a6be63ecd01")) {
+                if (document.getElementById("9171ea63-7f82-4830-8a9b-9dca28ab1e88")) {
                     Plotly.newPlot(
-                        'c82cabe3-8fd1-429c-9460-1a6be63ecd01',
+                        '9171ea63-7f82-4830-8a9b-9dca28ab1e88',
                         [{"name": "2000_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [185787, 51867, 51466, 50730, 34919, 1223400, 894943, 776733, 461522, 292648, 219773, 196086, 147306]}, {"name": "2010_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [205671.0, 81557.0, 54255.0, 56813.0, 75092.0, 1307402.0, 945942.0, 805235.0, 462257.0, 261310.0, 210565.0, 195976.0, 145170.0]}, {"name": "2000_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["77850", "19379", "20627", "19771", "12293", "469689", "281841", "346527", "171632", "145574", "99789", "77589", "68192"]}, {"name": "2010_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [92700.0, 30507.0, 22404.0, 22977.0, 26674.0, 516033.0, 314038.0, 376942.0, 176032.0, 133444.0, 97158.0, 80389.0, 64356.0]}, {"name": "2000_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["185787", "51867", "51466", "50730", "34919", "1223400", "894943", "776733", "461522", "292648", "219773", "196086", "147306"]}, {"name": "2010_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [85704.0, 27729.0, 20832.0, 21203.0, 25302.0, 483092.0, 301366.0, 345811.0, 163531.0, 112536.0, 87027.0, 74550.0, 57355.0]}],
                         {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
                             
-var gd = document.getElementById('c82cabe3-8fd1-429c-9460-1a6be63ecd01');
+var gd = document.getElementById('9171ea63-7f82-4830-8a9b-9dca28ab1e88');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -15995,7 +16278,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">three_state_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">three_state_df</span><span class="p">[</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span><span class="n">states</span><span class="o">.</span><span class="n">CA</span><span class="o">.</span><span class="n">fips</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
@@ -16008,7 +16291,7 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span>
@@ -16041,20 +16324,99 @@ if (outputEl) {{
 <div>
         
         
-            <div id="549ad45b-93b1-4dac-9182-5b7a9f8371dd" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <div id="2716aa19-3af3-494b-b53d-90de9074fc7e" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     
-                if (document.getElementById("549ad45b-93b1-4dac-9182-5b7a9f8371dd")) {
+                if (document.getElementById("2716aa19-3af3-494b-b53d-90de9074fc7e")) {
                     Plotly.newPlot(
-                        '549ad45b-93b1-4dac-9182-5b7a9f8371dd',
+                        '2716aa19-3af3-494b-b53d-90de9074fc7e',
                         [{"name": "2000_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [185787, 51867, 51466, 50730, 34919, 292648, 219773, 196086, 147306]}, {"name": "2010_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [205671.0, 81557.0, 54255.0, 56813.0, 75092.0, 261310.0, 210565.0, 195976.0, 145170.0]}, {"name": "2000_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["77850", "19379", "20627", "19771", "12293", "145574", "99789", "77589", "68192"]}, {"name": "2010_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [92700.0, 30507.0, 22404.0, 22977.0, 26674.0, 133444.0, 97158.0, 80389.0, 64356.0]}, {"name": "2000_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["185787", "51867", "51466", "50730", "34919", "292648", "219773", "196086", "147306"]}, {"name": "2010_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [85704.0, 27729.0, 20832.0, 21203.0, 25302.0, 112536.0, 87027.0, 74550.0, 57355.0]}],
                         {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
                             
-var gd = document.getElementById('549ad45b-93b1-4dac-9182-5b7a9f8371dd');
+var gd = document.getElementById('2716aa19-3af3-494b-b53d-90de9074fc7e');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })
+                };
+                });
+            </script>
+        </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_age&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Median_Age_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_age&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Median_Age_2010&#39;</span><span class="p">]),</span>
+<span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">barmode</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+        
+        
+            <div id="d48d8bb8-9069-417d-b823-8185098283dc" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <script type="text/javascript">
+                require(["plotly"], function(Plotly) {
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+                    
+                if (document.getElementById("d48d8bb8-9069-417d-b823-8185098283dc")) {
+                    Plotly.newPlot(
+                        'd48d8bb8-9069-417d-b823-8185098283dc',
+                        [{"name": "2000_age", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["32.8", "28.5", "28.8", "32.3", "30.1", "33.6", "30.8", "35.8", "30.5"]}, {"name": "2010_age", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [35.3, 30.1, 30.2, 32.2, 32.5, 33.2, 30.8, 37.6, 29.6]}],
+                        {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
+                        {"responsive": true}
+                    ).then(function(){
+                            
+var gd = document.getElementById('d48d8bb8-9069-417d-b823-8185098283dc');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -16092,29 +16454,48 @@ if (outputEl) {{
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="American-Community-Servey">American Community Servey<a class="anchor-link" href="#American-Community-Servey">&#182;</a></h2>
+<h2 id="American-Community-Survey">American Community Survey<a class="anchor-link" href="#American-Community-Survey">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">acs_years</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">2018</span><span class="p">):</span>
-    <span class="n">acs_test</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">acs5</span><span class="o">.</span><span class="n">state_place</span><span class="p">((</span><span class="s1">&#39;NAME&#39;</span><span class="p">,</span>
-<span class="s1">&#39;B01003_001E&#39;</span><span class="p">,</span>
-<span class="s1">&#39;B00002_001E&#39;</span><span class="p">,</span>
-<span class="s1">&#39;B09018_007E&#39;</span><span class="p">),</span> <span class="n">states</span><span class="o">.</span><span class="n">CA</span><span class="o">.</span><span class="n">fips</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">acs_years</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">acs_test</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">acs_years</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">acs_years</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-        <span class="s1">&#39;NAME&#39;</span> <span class="p">:</span> <span class="s1">&#39;City_Name&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;place&#39;</span><span class="p">:</span> <span class="s1">&#39;FIPS&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;B01003_001E&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Population_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
-        <span class="s1">&#39;B00002_001E&#39;</span><span class="p">:</span> <span class="s1">&#39;Total_Housing_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
-        <span class="s1">&#39;B09018_007E&#39;</span><span class="p">:</span> <span class="s1">&#39;Presence_of_Non-Relatives_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)})</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">three_state_acs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">acs_years_ca</span><span class="p">:</span>
+    <span class="n">acs_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">acs_years_ca</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">acs_years_ny</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">acs_years_id</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+    <span class="n">three_state_acs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">acs_1</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">three_state_acs</span><span class="p">:</span>
+    <span class="n">three_state_df</span> <span class="o">=</span> <span class="n">three_state_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">three_state_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -16127,43 +16508,7 @@ if (outputEl) {{
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>2012
-2013
-2014
-2015
-2016
-2017
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">acs_years</span><span class="p">[</span><span class="mi">2013</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[47]:</div>
+    <div class="prompt output_prompt">Out[50]:</div>
 
 
 
@@ -16186,62 +16531,153 @@ if (outputEl) {{
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Total_Housing_2013</th>
-      <th>Total_Population_2013</th>
-      <th>Presence_of_Non-Relatives_2013</th>
-      <th>City_Name</th>
       <th>FIPS</th>
-      <th>state</th>
+      <th>Total_Housing_2000</th>
+      <th>Occupancy_Status_For_Housing_Units_2000</th>
+      <th>Vacancy_Status_2000</th>
+      <th>For_Rent_2000</th>
+      <th>Rented_Not_Occupied_2000</th>
+      <th>For_Sale_Only_2000</th>
+      <th>Sold_Not_Occupied_2000</th>
+      <th>For_Seasonal_Recreational_Or_Occasional_Use_2000</th>
+      <th>For_Migrant_Workers_2000</th>
+      <th>...</th>
+      <th>Total_Population_2015</th>
+      <th>Presence_of_Non-Relatives_2015</th>
+      <th>Total_Housing_2016</th>
+      <th>Median_Age_2016</th>
+      <th>Total_Population_2016</th>
+      <th>Presence_of_Non-Relatives_2016</th>
+      <th>Total_Housing_2017</th>
+      <th>Median_Age_2017</th>
+      <th>Total_Population_2017</th>
+      <th>Presence_of_Non-Relatives_2017</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>2840.0</td>
-      <td>86833.0</td>
-      <td>389.0</td>
-      <td>Chico city, California</td>
-      <td>13014</td>
-      <td>06</td>
+      <td>08830</td>
+      <td>77850</td>
+      <td>77850</td>
+      <td>3412</td>
+      <td>1463</td>
+      <td>739</td>
+      <td>302</td>
+      <td>353</td>
+      <td>1</td>
+      <td>554</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>5.0</td>
-      <td>233.0</td>
-      <td>0.0</td>
-      <td>Chilcoot-Vinton CDP, California</td>
-      <td>13077</td>
-      <td>06</td>
+      <td>56260</td>
+      <td>19379</td>
+      <td>19379</td>
+      <td>1289</td>
+      <td>448</td>
+      <td>440</td>
+      <td>90</td>
+      <td>57</td>
+      <td>3</td>
+      <td>251</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>39.0</td>
-      <td>1503.0</td>
-      <td>0.0</td>
-      <td>China Lake Acres CDP, California</td>
-      <td>13157</td>
-      <td>06</td>
+      <td>64090</td>
+      <td>20627</td>
+      <td>20627</td>
+      <td>1293</td>
+      <td>556</td>
+      <td>298</td>
+      <td>87</td>
+      <td>84</td>
+      <td>1</td>
+      <td>267</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>7.0</td>
-      <td>94.0</td>
-      <td>0.0</td>
-      <td>Chinese Camp CDP, California</td>
-      <td>13182</td>
-      <td>06</td>
+      <td>39700</td>
+      <td>19771</td>
+      <td>19771</td>
+      <td>978</td>
+      <td>373</td>
+      <td>200</td>
+      <td>82</td>
+      <td>86</td>
+      <td>0</td>
+      <td>237</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1506.0</td>
-      <td>79342.0</td>
-      <td>381.0</td>
-      <td>Chino city, California</td>
-      <td>13210</td>
-      <td>06</td>
+      <td>52120</td>
+      <td>12293</td>
+      <td>12293</td>
+      <td>464</td>
+      <td>56</td>
+      <td>276</td>
+      <td>45</td>
+      <td>22</td>
+      <td>0</td>
+      <td>65</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 55 columns</p>
 </div>
 </div>
 

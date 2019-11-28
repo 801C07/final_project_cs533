@@ -33,50 +33,9 @@ c = Census('fb97753783c42ae57fe1a640e38fe04e921e5d1a')
 # In[4]:
 
 
-city_2010 = c.sf1.state_place(('NAME', 'H001001', 
-                               'P013001', 'P002002', 'P002005', 
-                               'H003001', 'P027001', 
-                               'H005001', 'H005002', 'H005003', 
-                               'H005004', 'H005005', 'H005006', 
-                               'H005007', 'P002001'), 
-                              states.ID.fips, '*', year=2010)
-c_pop_2010 = pd.DataFrame.from_records(city_2010)
-c_pop_2010_50000 = c_pop_2010.rename(columns={
-        'NAME' : 'City_Name',
-        'place': 'FIPS',
-        'P002001': 'Total_Population_2010',
-        'P002002':'Total_Urban_Population_2010',
-        'P002005':'Total_Rural_Population_2010',
-        'H001001': 'Total_Housing_2010',
-        'P013001': 'Median_Age_2010',
-        'H003001': 'Occupancy_Status_For_Housing_Units_2010',
-        'P027001': 'Presence_of_Non-Relatives_2010',
-        'H005001': 'Vacancy_Status_2010',
-        'H005002': 'For_Rent_2010',
-        'H005003': 'Rented_Not_Occupied_2010',
-        'H005004': 'For_Sale_Only_2010',
-        'H005005': 'Sold_Not_Occupied_2010',
-        'H005006': 'For_Seasonal_Recreational_Or_Occasional_Use_2010',
-        'H005007': 'For_Migrant_Workers_2010'})
+keys = ['NAME' ,'P002001','P002002','P002005','H001001','P013001','H003001','P027001','H005001','H005002','H005003','H005004','H005005','H005006','H005007']
 
-
-# In[5]:
-
-
-c_pop_2010_50000.head()
-
-
-# In[6]:
-
-
-city_2000 = c.sf1.state_place(('NAME', 'H001001', 
-                               'P013001', 'P002002', 'P002005', 
-                               'H003001', 'P027001', 
-                               'H005001', 'H005002', 'H005003', 
-                               'H005004', 'H005005', 'H005006', 
-                               'H005007', 'P002001'), states.ID.fips, '*', year=2000)
-c_pop_2000 = pd.DataFrame.from_records(city_2000)
-c_pop_2000_50000 = c_pop_2000.rename(columns={
+renames_2000 = {
         'NAME' : 'City_Name',
         'place': 'FIPS',
         'P002001': 'Total_Population_2000',
@@ -92,7 +51,44 @@ c_pop_2000_50000 = c_pop_2000.rename(columns={
         'H005004': 'For_Sale_Only_2000',
         'H005005': 'Sold_Not_Occupied_2000',
         'H005006': 'For_Seasonal_Recreational_Or_Occasional_Use_2000',
-        'H005007': 'For_Migrant_Workers_2000'})
+        'H005007': 'For_Migrant_Workers_2000'
+}
+
+renames_2010 = {
+        'NAME' : 'City_Name',
+        'place': 'FIPS',
+        'P002001': 'Total_Population_2010',
+        'P002002': 'Total_Urban_Population_2010',
+        'P002005': 'Total_Rural_Population_2010',
+        'H001001': 'Total_Housing_2010',
+        'P013001': 'Median_Age_2010',
+        'H003001': 'Occupancy_Status_For_Housing_Units_2010',
+        'P027001': 'Presence_of_Non-Relatives_2010',
+        'H005001': 'Vacancy_Status_2010',
+        'H005002': 'For_Rent_2010',
+        'H005003': 'Rented_Not_Occupied_2010',
+        'H005004': 'For_Sale_Only_2010',
+        'H005005': 'Sold_Not_Occupied_2010',
+        'H005006': 'For_Seasonal_Recreational_Or_Occasional_Use_2010',
+        'H005007': 'For_Migrant_Workers_2010'}
+
+city_2010 = c.sf1.state_place(keys, states.ID.fips, '*', year=2010)
+c_pop_2010 = pd.DataFrame.from_records(city_2010)
+c_pop_2010_50000 = c_pop_2010.rename(columns=renames_2010)
+
+
+# In[5]:
+
+
+c_pop_2010_50000.head()
+
+
+# In[6]:
+
+
+city_2000 = c.sf1.state_place(keys, states.ID.fips, '*', year=2000)
+c_pop_2000 = pd.DataFrame.from_records(city_2000)
+c_pop_2000_50000 = c_pop_2000.rename(columns=renames_2000)
 
 
 # In[7]:
@@ -196,81 +192,14 @@ for x in range(2012, 2018):
 # In[17]:
 
 
-# acs_years[2013].head()
+for x in acs_years:
+    id_join = id_join.join(x)
 
 
 # In[18]:
 
 
-city_2000_2 = c.sf1.state_place(('NAME', 'H001001', 
-                               'P013001', 'P027001', 'P002001'), states.ID.fips, '*', year=2000)
-c_pop_2000_2 = pd.DataFrame.from_records(city_2000_2)
-c_pop_2000_50000_2 = c_pop_2000_2.rename(columns={
-        'NAME' : 'City_Name',
-        'place': 'FIPS',
-        'P002001': 'Total_Population_2000',
-        'H001001': 'Total_Housing_2000',
-        'P013001': 'Median_Age_2000',
-        'P027001': 'Presence_of_Non-Relatives_2000',})
-
-
-# In[19]:
-
-
-city_2010_2 = c.sf1.state_place(('NAME', 'H001001', 
-                               'P013001', 'P027001', 'P002001'), states.ID.fips, '*', year=2010)
-c_pop_2010_2 = pd.DataFrame.from_records(city_2000_2)
-c_pop_2010_50000_2 = c_pop_2000_2.rename(columns={
-        'NAME' : 'City_Name',
-        'place': 'FIPS',
-        'P002001': 'Total_Population_2010',
-        'H001001': 'Total_Housing_2010',
-        'P013001': 'Median_Age_2010',
-        'P027001': 'Presence_of_Non-Relatives_2010',})
-
-
-# In[20]:
-
-
-c_pop_2000_50000_2.drop(columns=['City_Name', 'state'], inplace=True)
-
-
-# In[21]:
-
-
-c_pop_2000_50000_2.set_index('FIPS', inplace=True)
-c_pop_2010_50000_2.set_index('FIPS', inplace=True)
-
-
-# In[22]:
-
-
-id_join_2 = c_pop_2000_50000_2.join(c_pop_2010_50000_2, on='FIPS')
-
-
-# In[23]:
-
-
-id_join_2['Total_Population_2000'] = id_join_2['Total_Population_2000'].astype('i8')
-
-
-# In[24]:
-
-
-id_join_2 =  id_join_2.nlargest(5, 'Total_Population_2000')
-
-
-# In[25]:
-
-
-for x in acs_years:
-    id_join_2 = id_join_2.join(x)
-
-
-# In[26]:
-
-
-id_join_2.head()
+id_join.head()
 
 
 # In[ ]:

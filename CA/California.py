@@ -3,13 +3,13 @@
 
 # # California -- City Sustainability
 
-# In[2]:
+# In[1]:
 
 
 get_ipython().run_line_magic('pip', 'install census us')
 
 
-# In[3]:
+# In[2]:
 
 
 import pandas as pd
@@ -22,7 +22,7 @@ from us import states
 import plotly.graph_objects as go
 
 
-# In[4]:
+# In[3]:
 
 
 c = Census('fb97753783c42ae57fe1a640e38fe04e921e5d1a')
@@ -30,7 +30,7 @@ c = Census('fb97753783c42ae57fe1a640e38fe04e921e5d1a')
 
 # ## Get's the 5 largest cities in California
 
-# In[5]:
+# In[4]:
 
 
 city_2010 = c.sf1.state_place(('NAME', 'H001001', 
@@ -60,13 +60,13 @@ c_pop_2010_50000 = c_pop_2010.rename(columns={
         'H005007': 'For_Migrant_Workers_2010'})
 
 
-# In[6]:
+# In[5]:
 
 
 c_pop_2010_50000.head()
 
 
-# In[7]:
+# In[6]:
 
 
 city_2000 = c.sf1.state_place(('NAME', 'H001001', 
@@ -95,50 +95,50 @@ c_pop_2000_50000 = c_pop_2000.rename(columns={
         'H005007': 'For_Migrant_Workers_2000'})
 
 
-# In[8]:
+# In[7]:
 
 
 c_pop_2000_50000.drop(columns=['City_Name', 'state'], inplace=True)
 
 
-# In[9]:
+# In[8]:
 
 
 c_pop_2000_50000.head()
 
 
-# In[10]:
+# In[9]:
 
 
 c_pop_2000_50000.set_index('FIPS', inplace=True)
 c_pop_2010_50000.set_index('FIPS', inplace=True)
 
 
-# In[11]:
+# In[10]:
 
 
 ca_join = c_pop_2000_50000.join(c_pop_2010_50000, on='FIPS')
 
 
-# In[12]:
+# In[11]:
 
 
 ca_join.head()
 
 
-# In[13]:
+# In[12]:
 
 
 ca_join['Total_Population_2000'] = ca_join['Total_Population_2000'].astype('i8')
 
 
-# In[14]:
+# In[13]:
 
 
 ca_join = ca_join.nlargest(5, 'Total_Population_2000')
 
 
-# In[15]:
+# In[14]:
 
 
 fig = go.Figure(data=[
@@ -153,37 +153,57 @@ fig.update_layout(barmode='group')
 fig.show()
 
 
+# In[15]:
+
+
+fig = go.Figure(data=[
+    go.Bar(name='2000_age', x=ca_join['City_Name'], y=ca_join['Median_Age_2000']),
+    go.Bar(name='2010_age', x=ca_join['City_Name'], y=ca_join['Median_Age_2010']),
+])
+fig.update_layout(barmode='group')
+fig.show()
+
+
 # ## American Community Servey
 
-# In[46]:
+# In[16]:
 
 
-acs_years = {}
+i = 0
+acs_years = []
 for x in range(2012, 2018):
     acs_test = c.acs5.state_place(('NAME',
-'B01003_001E',
-'B00002_001E',
-'B09018_007E'), states.CA.fips, '*', year=x)
-    acs_years[x] = pd.DataFrame.from_records(acs_test)
+                                   'B01003_001E',
+                                   'B00002_001E',
+                                   'B09018_007E',
+                                   'B01002_001E'), states.CA.fips, '*', year=x)
+    acs_years.append(pd.DataFrame.from_records(acs_test))
     print(x)
-    acs_years[x] = acs_years[x].rename(columns={
+    acs_years[i] = acs_years[i].rename(columns={
         'NAME' : 'City_Name',
         'place': 'FIPS',
         'B01003_001E': 'Total_Population_{}'.format(x),
         'B00002_001E': 'Total_Housing_{}'.format(x),
-        'B09018_007E': 'Presence_of_Non-Relatives_{}'.format(x)})
+        'B09018_007E': 'Presence_of_Non-Relatives_{}'.format(x),
+        'B01002_001E': 'Median_Age_{}'.format(x),
+    })
+    acs_years[i].set_index('FIPS', inplace=True)
+    acs_years[i].drop(columns=['City_Name', 'state'], inplace=True)
+    acs_years[i] = acs_years[i].nlargest(5, 'Total_Population_{}'.format(x))
+    i = i + 1
 
 
-# In[47]:
+# In[17]:
 
 
-acs_years[2013].head()
+for x in acs_years:
+    ca_join = ca_join.join(x)
 
 
-# In[ ]:
+# In[18]:
 
 
-
+ca_join.head()
 
 
 # In[ ]:
