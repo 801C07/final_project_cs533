@@ -13149,15 +13149,15 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Requirement already satisfied: census in /anaconda3/lib/python3.7/site-packages (0.8.13)
-Requirement already satisfied: us in /anaconda3/lib/python3.7/site-packages (1.0.0)
-Requirement already satisfied: requests&gt;=1.1.0 in /anaconda3/lib/python3.7/site-packages (from census) (2.22.0)
-Requirement already satisfied: future in /anaconda3/lib/python3.7/site-packages (from census) (0.17.1)
-Requirement already satisfied: jellyfish==0.5.6 in /anaconda3/lib/python3.7/site-packages (from us) (0.5.6)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (2019.9.11)
-Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (2.8)
-Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (1.24.2)
-Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (3.0.4)
+<pre>Requirement already satisfied: census in /Users/Ryan/anaconda3/lib/python3.7/site-packages (0.8.13)
+Requirement already satisfied: us in /Users/Ryan/anaconda3/lib/python3.7/site-packages (1.0.0)
+Requirement already satisfied: requests&gt;=1.1.0 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from census) (2.22.0)
+Requirement already satisfied: future in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from census) (0.17.1)
+Requirement already satisfied: jellyfish==0.5.6 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from us) (0.5.6)
+Requirement already satisfied: idna&lt;2.9,&gt;=2.5 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (2.8)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (1.24.2)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (2019.9.11)
+Requirement already satisfied: chardet&lt;3.1.0,&gt;=3.0.2 in /Users/Ryan/anaconda3/lib/python3.7/site-packages (from requests&gt;=1.1.0-&gt;census) (3.0.4)
 Note: you may need to restart the kernel to use updated packages.
 </pre>
 </div>
@@ -13184,6 +13184,39 @@ Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">states</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">shapefile_urls</span><span class="p">(</span><span class="s1">&#39;county&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[63]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;https://www2.census.gov/geo/tiger/TIGER2010/COUNTY/2010/tl_2010_16_county10.zip&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -13322,7 +13355,7 @@ Note: you may need to restart the kernel to use updated packages.
 
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>//anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:85: FutureWarning:
+<pre>/Users/Ryan/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:85: FutureWarning:
 
 Sorting because non-concatenation axis is not aligned. A future version
 of pandas will change to not sort by default.
@@ -14327,20 +14360,20 @@ To retain the current behavior and silence the warning, pass &#39;sort=True&#39;
 <div>
         
         
-            <div id="6c7a074a-70c9-4a84-84c5-8a8f368bce61" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <div id="530e8f1f-cd67-42a1-a3b5-282f00389945" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     
-                if (document.getElementById("6c7a074a-70c9-4a84-84c5-8a8f368bce61")) {
+                if (document.getElementById("530e8f1f-cd67-42a1-a3b5-282f00389945")) {
                     Plotly.newPlot(
-                        '6c7a074a-70c9-4a84-84c5-8a8f368bce61',
+                        '530e8f1f-cd67-42a1-a3b5-282f00389945',
                         [{"name": "2000_pop", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [3694820, 1223400, 894943, 776733, 461522]}, {"name": "2010_pop", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [3792621.0, 1307402.0, 945942.0, 805235.0, 462257.0]}, {"name": "2000_housing", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["1337706", "469689", "281841", "346527", "171632"]}, {"name": "2010_housing", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [1413995.0, 516033.0, 314038.0, 376942.0, 176032.0]}, {"name": "2000_non-relatives", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": ["3694820", "1223400", "894943", "776733", "461522"]}, {"name": "2010_non-relatives", "type": "bar", "x": ["Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California"], "y": [1318168.0, 483092.0, 301366.0, 345811.0, 163531.0]}],
                         {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
                             
-var gd = document.getElementById('6c7a074a-70c9-4a84-84c5-8a8f368bce61');
+var gd = document.getElementById('530e8f1f-cd67-42a1-a3b5-282f00389945');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -15066,20 +15099,20 @@ if (outputEl) {{
 <div>
         
         
-            <div id="767cf034-4b66-437c-8f15-7cc377b8b93b" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <div id="0ebbba65-0a40-42a3-9cbe-2d6d4d2bf658" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     
-                if (document.getElementById("767cf034-4b66-437c-8f15-7cc377b8b93b")) {
+                if (document.getElementById("0ebbba65-0a40-42a3-9cbe-2d6d4d2bf658")) {
                     Plotly.newPlot(
-                        '767cf034-4b66-437c-8f15-7cc377b8b93b',
+                        '0ebbba65-0a40-42a3-9cbe-2d6d4d2bf658',
                         [{"name": "2000_pop", "type": "bar", "x": ["New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [8008278, 292648, 219773, 196086, 147306]}, {"name": "2010_pop", "type": "bar", "x": ["New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [8175133.0, 261310.0, 210565.0, 195976.0, 145170.0]}, {"name": "2000_housing", "type": "bar", "x": ["New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["3200912", "145574", "99789", "77589", "68192"]}, {"name": "2010_housing", "type": "bar", "x": ["New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [3371062.0, 133444.0, 97158.0, 80389.0, 64356.0]}, {"name": "2000_non-relatives", "type": "bar", "x": ["New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["8008278", "292648", "219773", "196086", "147306"]}, {"name": "2010_non-relatives", "type": "bar", "x": ["New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [3109784.0, 112536.0, 87027.0, 74550.0, 57355.0]}],
                         {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
                             
-var gd = document.getElementById('767cf034-4b66-437c-8f15-7cc377b8b93b');
+var gd = document.getElementById('0ebbba65-0a40-42a3-9cbe-2d6d4d2bf658');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -15772,6 +15805,227 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">id_join</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[55]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Total_Housing_2000</th>
+      <th>Occupancy_Status_For_Housing_Units_2000</th>
+      <th>Vacancy_Status_2000</th>
+      <th>For_Rent_2000</th>
+      <th>Rented_Not_Occupied_2000</th>
+      <th>For_Sale_Only_2000</th>
+      <th>Sold_Not_Occupied_2000</th>
+      <th>For_Seasonal_Recreational_Or_Occasional_Use_2000</th>
+      <th>For_Migrant_Workers_2000</th>
+      <th>Total_Population_2000</th>
+      <th>...</th>
+      <th>Sold_Not_Occupied_2010</th>
+      <th>For_Seasonal_Recreational_Or_Occasional_Use_2010</th>
+      <th>For_Migrant_Workers_2010</th>
+      <th>City_Name</th>
+      <th>Total_Population_2010</th>
+      <th>Total_Urban_Population_2010</th>
+      <th>Total_Rural_Population_2010</th>
+      <th>Median_Age_2010</th>
+      <th>Presence_of_Non-Relatives_2010</th>
+      <th>state</th>
+    </tr>
+    <tr>
+      <th>FIPS</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>08830</th>
+      <td>77850</td>
+      <td>77850</td>
+      <td>3412</td>
+      <td>1463</td>
+      <td>739</td>
+      <td>302</td>
+      <td>353</td>
+      <td>1</td>
+      <td>554</td>
+      <td>185787</td>
+      <td>...</td>
+      <td>234.0</td>
+      <td>595.0</td>
+      <td>3.0</td>
+      <td>Boise City city, Idaho</td>
+      <td>205671.0</td>
+      <td>204776.0</td>
+      <td>895.0</td>
+      <td>35.3</td>
+      <td>85704.0</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>56260</th>
+      <td>19379</td>
+      <td>19379</td>
+      <td>1289</td>
+      <td>448</td>
+      <td>440</td>
+      <td>90</td>
+      <td>57</td>
+      <td>3</td>
+      <td>251</td>
+      <td>51867</td>
+      <td>...</td>
+      <td>106.0</td>
+      <td>105.0</td>
+      <td>0.0</td>
+      <td>Nampa city, Idaho</td>
+      <td>81557.0</td>
+      <td>81285.0</td>
+      <td>272.0</td>
+      <td>30.1</td>
+      <td>27729.0</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>64090</th>
+      <td>20627</td>
+      <td>20627</td>
+      <td>1293</td>
+      <td>556</td>
+      <td>298</td>
+      <td>87</td>
+      <td>84</td>
+      <td>1</td>
+      <td>267</td>
+      <td>51466</td>
+      <td>...</td>
+      <td>70.0</td>
+      <td>97.0</td>
+      <td>3.0</td>
+      <td>Pocatello city, Idaho</td>
+      <td>54255.0</td>
+      <td>54189.0</td>
+      <td>66.0</td>
+      <td>30.2</td>
+      <td>20832.0</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>39700</th>
+      <td>19771</td>
+      <td>19771</td>
+      <td>978</td>
+      <td>373</td>
+      <td>200</td>
+      <td>82</td>
+      <td>86</td>
+      <td>0</td>
+      <td>237</td>
+      <td>50730</td>
+      <td>...</td>
+      <td>63.0</td>
+      <td>157.0</td>
+      <td>5.0</td>
+      <td>Idaho Falls city, Idaho</td>
+      <td>56813.0</td>
+      <td>56558.0</td>
+      <td>255.0</td>
+      <td>32.2</td>
+      <td>21203.0</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>52120</th>
+      <td>12293</td>
+      <td>12293</td>
+      <td>464</td>
+      <td>56</td>
+      <td>276</td>
+      <td>45</td>
+      <td>22</td>
+      <td>0</td>
+      <td>65</td>
+      <td>34919</td>
+      <td>...</td>
+      <td>71.0</td>
+      <td>135.0</td>
+      <td>0.0</td>
+      <td>Meridian city, Idaho</td>
+      <td>75092.0</td>
+      <td>74986.0</td>
+      <td>106.0</td>
+      <td>32.5</td>
+      <td>25302.0</td>
+      <td>16</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 30 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -15805,20 +16059,20 @@ if (outputEl) {{
 <div>
         
         
-            <div id="e139d03d-0f31-4c85-ab06-fa4e749a88f6" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <div id="f041e7eb-f359-4d64-8a77-2dec83674a96" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     
-                if (document.getElementById("e139d03d-0f31-4c85-ab06-fa4e749a88f6")) {
+                if (document.getElementById("f041e7eb-f359-4d64-8a77-2dec83674a96")) {
                     Plotly.newPlot(
-                        'e139d03d-0f31-4c85-ab06-fa4e749a88f6',
+                        'f041e7eb-f359-4d64-8a77-2dec83674a96',
                         [{"name": "2000_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho"], "y": [185787, 51867, 51466, 50730, 34919]}, {"name": "2010_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho"], "y": [205671.0, 81557.0, 54255.0, 56813.0, 75092.0]}, {"name": "2000_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho"], "y": ["77850", "19379", "20627", "19771", "12293"]}, {"name": "2010_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho"], "y": [92700.0, 30507.0, 22404.0, 22977.0, 26674.0]}, {"name": "2000_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho"], "y": ["185787", "51867", "51466", "50730", "34919"]}, {"name": "2010_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho"], "y": [85704.0, 27729.0, 20832.0, 21203.0, 25302.0]}],
                         {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
                             
-var gd = document.getElementById('e139d03d-0f31-4c85-ab06-fa4e749a88f6');
+var gd = document.getElementById('f041e7eb-f359-4d64-8a77-2dec83674a96');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -16111,20 +16365,20 @@ if (outputEl) {{
 <div>
         
         
-            <div id="ebfc9db4-fed7-4320-a1f4-297429320a73" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <div id="e9ddad7f-69f6-4d39-87d5-7a32a57fae5e" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     
-                if (document.getElementById("ebfc9db4-fed7-4320-a1f4-297429320a73")) {
+                if (document.getElementById("e9ddad7f-69f6-4d39-87d5-7a32a57fae5e")) {
                     Plotly.newPlot(
-                        'ebfc9db4-fed7-4320-a1f4-297429320a73',
+                        'e9ddad7f-69f6-4d39-87d5-7a32a57fae5e',
                         [{"name": "2000_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [185787, 51867, 51466, 50730, 34919, 3694820, 1223400, 894943, 776733, 461522, 8008278, 292648, 219773, 196086, 147306]}, {"name": "2010_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [205671.0, 81557.0, 54255.0, 56813.0, 75092.0, 3792621.0, 1307402.0, 945942.0, 805235.0, 462257.0, 8175133.0, 261310.0, 210565.0, 195976.0, 145170.0]}, {"name": "2000_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["77850", "19379", "20627", "19771", "12293", "1337706", "469689", "281841", "346527", "171632", "3200912", "145574", "99789", "77589", "68192"]}, {"name": "2010_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [92700.0, 30507.0, 22404.0, 22977.0, 26674.0, 1413995.0, 516033.0, 314038.0, 376942.0, 176032.0, 3371062.0, 133444.0, 97158.0, 80389.0, 64356.0]}, {"name": "2000_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["185787", "51867", "51466", "50730", "34919", "3694820", "1223400", "894943", "776733", "461522", "8008278", "292648", "219773", "196086", "147306"]}, {"name": "2010_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Los Angeles city, California", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "New York city, New York", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [85704.0, 27729.0, 20832.0, 21203.0, 25302.0, 1318168.0, 483092.0, 301366.0, 345811.0, 163531.0, 3109784.0, 112536.0, 87027.0, 74550.0, 57355.0]}],
                         {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
                             
-var gd = document.getElementById('ebfc9db4-fed7-4320-a1f4-297429320a73');
+var gd = document.getElementById('e9ddad7f-69f6-4d39-87d5-7a32a57fae5e');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -16218,20 +16472,20 @@ if (outputEl) {{
 <div>
         
         
-            <div id="9171ea63-7f82-4830-8a9b-9dca28ab1e88" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <div id="b0887045-f1ed-4cf0-9e74-4f644e81a6c1" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     
-                if (document.getElementById("9171ea63-7f82-4830-8a9b-9dca28ab1e88")) {
+                if (document.getElementById("b0887045-f1ed-4cf0-9e74-4f644e81a6c1")) {
                     Plotly.newPlot(
-                        '9171ea63-7f82-4830-8a9b-9dca28ab1e88',
+                        'b0887045-f1ed-4cf0-9e74-4f644e81a6c1',
                         [{"name": "2000_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [185787, 51867, 51466, 50730, 34919, 1223400, 894943, 776733, 461522, 292648, 219773, 196086, 147306]}, {"name": "2010_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [205671.0, 81557.0, 54255.0, 56813.0, 75092.0, 1307402.0, 945942.0, 805235.0, 462257.0, 261310.0, 210565.0, 195976.0, 145170.0]}, {"name": "2000_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["77850", "19379", "20627", "19771", "12293", "469689", "281841", "346527", "171632", "145574", "99789", "77589", "68192"]}, {"name": "2010_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [92700.0, 30507.0, 22404.0, 22977.0, 26674.0, 516033.0, 314038.0, 376942.0, 176032.0, 133444.0, 97158.0, 80389.0, 64356.0]}, {"name": "2000_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["185787", "51867", "51466", "50730", "34919", "1223400", "894943", "776733", "461522", "292648", "219773", "196086", "147306"]}, {"name": "2010_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "San Diego city, California", "San Jose city, California", "San Francisco city, California", "Long Beach city, California", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [85704.0, 27729.0, 20832.0, 21203.0, 25302.0, 483092.0, 301366.0, 345811.0, 163531.0, 112536.0, 87027.0, 74550.0, 57355.0]}],
                         {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
                             
-var gd = document.getElementById('9171ea63-7f82-4830-8a9b-9dca28ab1e88');
+var gd = document.getElementById('b0887045-f1ed-4cf0-9e74-4f644e81a6c1');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -16324,20 +16578,20 @@ if (outputEl) {{
 <div>
         
         
-            <div id="2716aa19-3af3-494b-b53d-90de9074fc7e" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <div id="7d4f9284-69fa-4263-a1a4-17055eb37f38" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     
-                if (document.getElementById("2716aa19-3af3-494b-b53d-90de9074fc7e")) {
+                if (document.getElementById("7d4f9284-69fa-4263-a1a4-17055eb37f38")) {
                     Plotly.newPlot(
-                        '2716aa19-3af3-494b-b53d-90de9074fc7e',
+                        '7d4f9284-69fa-4263-a1a4-17055eb37f38',
                         [{"name": "2000_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [185787, 51867, 51466, 50730, 34919, 292648, 219773, 196086, 147306]}, {"name": "2010_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [205671.0, 81557.0, 54255.0, 56813.0, 75092.0, 261310.0, 210565.0, 195976.0, 145170.0]}, {"name": "2000_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["77850", "19379", "20627", "19771", "12293", "145574", "99789", "77589", "68192"]}, {"name": "2010_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [92700.0, 30507.0, 22404.0, 22977.0, 26674.0, 133444.0, 97158.0, 80389.0, 64356.0]}, {"name": "2000_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["185787", "51867", "51466", "50730", "34919", "292648", "219773", "196086", "147306"]}, {"name": "2010_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [85704.0, 27729.0, 20832.0, 21203.0, 25302.0, 112536.0, 87027.0, 74550.0, 57355.0]}],
                         {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
                             
-var gd = document.getElementById('2716aa19-3af3-494b-b53d-90de9074fc7e');
+var gd = document.getElementById('7d4f9284-69fa-4263-a1a4-17055eb37f38');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -16403,20 +16657,20 @@ if (outputEl) {{
 <div>
         
         
-            <div id="d48d8bb8-9069-417d-b823-8185098283dc" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <div id="1e379ebe-608e-41fa-aa4e-133334e5a82e" class="plotly-graph-div" style="height:525px; width:100%;"></div>
             <script type="text/javascript">
                 require(["plotly"], function(Plotly) {
                     window.PLOTLYENV=window.PLOTLYENV || {};
                     
-                if (document.getElementById("d48d8bb8-9069-417d-b823-8185098283dc")) {
+                if (document.getElementById("1e379ebe-608e-41fa-aa4e-133334e5a82e")) {
                     Plotly.newPlot(
-                        'd48d8bb8-9069-417d-b823-8185098283dc',
+                        '1e379ebe-608e-41fa-aa4e-133334e5a82e',
                         [{"name": "2000_age", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["32.8", "28.5", "28.8", "32.3", "30.1", "33.6", "30.8", "35.8", "30.5"]}, {"name": "2010_age", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [35.3, 30.1, 30.2, 32.2, 32.5, 33.2, 30.8, 37.6, 29.6]}],
                         {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
                         {"responsive": true}
                     ).then(function(){
                             
-var gd = document.getElementById('d48d8bb8-9069-417d-b823-8185098283dc');
+var gd = document.getElementById('1e379ebe-608e-41fa-aa4e-133334e5a82e');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -16481,8 +16735,7 @@ if (outputEl) {{
 <div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">three_state_acs</span><span class="p">:</span>
-    <span class="n">three_state_df</span> <span class="o">=</span> <span class="n">three_state_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">three_state_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;FIPS&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -16493,6 +16746,248 @@ if (outputEl) {{
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">three_state_acs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">three_state_df</span> <span class="o">=</span> <span class="n">three_state_df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;FIPS&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>       Total_Housing_2012  Median_Age_2012  Total_Population_2012  \
+FIPS                                                                
+44000             97760.0             34.1              3804503.0   
+66000             34361.0             33.7              1308619.0   
+68000             22425.0             35.2               954379.0   
+67000             22906.0             38.5               807755.0   
+27000             10914.0             29.4               495777.0   
+51000            215308.0             35.5              8199221.0   
+11000              8891.0             33.3               261955.0   
+63000              7192.0             31.1               210967.0   
+84000              5296.0             37.6               196459.0   
+73000              5342.0             29.4               144703.0   
+08830              5659.0             35.8               208332.0   
+56260              1694.0             29.8                81667.0   
+52120              1444.0             32.6                75210.0   
+39700              1681.0             32.7                57021.0   
+64090              1686.0             30.4                54145.0   
+
+       Presence_of_Non-Relatives_2012  
+FIPS                                   
+44000                         44782.0  
+66000                          8572.0  
+68000                          9872.0  
+67000                          5258.0  
+27000                          5511.0  
+51000                         64799.0  
+11000                          1549.0  
+63000                          1746.0  
+84000                          1748.0  
+73000                          1049.0  
+08830                          1077.0  
+56260                           327.0  
+52120                           604.0  
+39700                           445.0  
+64090                            95.0  
+       Total_Housing_2013  Median_Age_2013  Total_Population_2013  \
+FIPS                                                                
+44000            103125.0             34.3              3827261.0   
+66000             34964.0             33.7              1322838.0   
+68000             23406.0             35.6               968903.0   
+67000             23782.0             38.5               817501.0   
+27000             11255.0             29.6               500819.0   
+51000            221083.0             35.6              8268999.0   
+11000              9041.0             33.5               260568.0   
+63000              7513.0             31.1               210624.0   
+84000              5449.0             37.6               197493.0   
+73000              5636.0             29.4               144742.0   
+08830              5617.0             35.8               209726.0   
+56260              1641.0             30.3                83140.0   
+52120              1314.0             33.4                78061.0   
+39700              1708.0             32.9                57536.0   
+64090              1713.0             30.8                54355.0   
+
+       Presence_of_Non-Relatives_2013  
+FIPS                                   
+44000                         43910.0  
+66000                          9083.0  
+68000                         10197.0  
+67000                          4928.0  
+27000                          5516.0  
+51000                         64718.0  
+11000                          1386.0  
+63000                          1637.0  
+84000                          1479.0  
+73000                          1218.0  
+08830                           994.0  
+56260                           415.0  
+52120                           560.0  
+39700                           469.0  
+64090                           100.0  
+       Total_Housing_2014  Median_Age_2014  Total_Population_2014  \
+FIPS                                                                
+44000            109784.0             34.6              3862210.0   
+66000             36075.0             33.9              1341510.0   
+68000             24669.0             35.9               986320.0   
+67000             24847.0             38.6               829072.0   
+27000             11691.0             29.8               506132.0   
+51000            229186.0             35.7              8354889.0   
+11000              9363.0             33.1               259959.0   
+63000              7973.0             31.2               210461.0   
+84000              5655.0             38.1               198654.0   
+73000              6021.0             29.7               144648.0   
+08830              5677.0             35.9               211655.0   
+56260              1613.0             30.8                84660.0   
+52120              1197.0             34.1                81025.0   
+39700              1788.0             32.9                57935.0   
+64090              1750.0             30.7                54466.0   
+
+       Presence_of_Non-Relatives_2014  
+FIPS                                   
+44000                         43217.0  
+66000                          8862.0  
+68000                         10816.0  
+67000                          5531.0  
+27000                          4792.0  
+51000                         66993.0  
+11000                          1400.0  
+63000                          1258.0  
+84000                          1379.0  
+73000                          1344.0  
+08830                          1009.0  
+56260                           405.0  
+52120                           631.0  
+39700                           247.0  
+64090                           102.0  
+       Total_Housing_2015  Median_Age_2015  Total_Population_2015  \
+FIPS                                                                
+44000            115548.0             34.9              3900794.0   
+66000             36895.0             34.0              1359791.0   
+68000             25647.0             36.1              1000860.0   
+67000             25790.0             38.5               840763.0   
+27000             12163.0             30.0               510451.0   
+51000            236858.0             35.8              8426743.0   
+11000              9721.0             33.1               259517.0   
+63000              8399.0             31.0               210745.0   
+84000              5814.0             37.9               199435.0   
+73000              6368.0             29.9               144564.0   
+08830              5699.0             35.9               214196.0   
+56260              1613.0             30.6                86203.0   
+52120              1112.0             34.6                84018.0   
+39700              1852.0             32.8                58374.0   
+64090              1819.0             31.0                54549.0   
+
+       Presence_of_Non-Relatives_2015  
+FIPS                                   
+44000                         40218.0  
+66000                          8180.0  
+68000                         10638.0  
+67000                          5793.0  
+27000                          4755.0  
+51000                         66649.0  
+11000                          1433.0  
+63000                          1365.0  
+84000                          1407.0  
+73000                          1314.0  
+08830                           933.0  
+56260                           401.0  
+52120                           272.0  
+39700                           130.0  
+64090                           111.0  
+       Total_Housing_2016  Median_Age_2016  Total_Population_2016  \
+FIPS                                                                
+44000            117861.0             35.0              3918872.0   
+66000             36884.0             34.2              1374812.0   
+68000             26125.0             36.1              1009363.0   
+67000             26388.0             38.4               850282.0   
+27000             12272.0             30.2               513807.0   
+51000            237307.0             35.9              8461961.0   
+11000              9658.0             32.9               258989.0   
+63000              8354.0             31.3               210291.0   
+84000              5664.0             38.5               199725.0   
+73000              6296.0             30.6               144350.0   
+08830              5859.0             35.8               218677.0   
+52120              1176.0             35.4                88247.0   
+56260              1703.0             31.1                87896.0   
+39700              1848.0             33.1                58933.0   
+64090              1797.0             31.4                54592.0   
+
+       Presence_of_Non-Relatives_2016  
+FIPS                                   
+44000                         39675.0  
+66000                          8124.0  
+68000                         10400.0  
+67000                          5346.0  
+27000                          4767.0  
+51000                         67370.0  
+11000                          1235.0  
+63000                          1302.0  
+84000                          1148.0  
+73000                          1036.0  
+08830                           591.0  
+52120                           374.0  
+56260                           389.0  
+39700                           161.0  
+64090                           112.0  
+       Total_Housing_2017  Median_Age_2017  Total_Population_2017  \
+FIPS                                                                
+44000            115400.0             35.2              3949776.0   
+66000             36377.0             34.3              1390966.0   
+68000             25882.0             36.4              1023031.0   
+67000             26142.0             38.3               864263.0   
+27000             12016.0             30.5               519037.0   
+51000            231338.0             36.2              8560072.0   
+11000              9431.0             32.8               259574.0   
+63000              8140.0             31.7               209463.0   
+84000              5425.0             38.8               200999.0   
+73000              6091.0             30.6               144405.0   
+08830              5814.0             36.0               220859.0   
+52120              1213.0             35.7                91917.0   
+56260              1707.0             31.4                89576.0   
+39700              1840.0             33.0                59414.0   
+64090              1763.0             31.6                54658.0   
+
+       Presence_of_Non-Relatives_2017  
+FIPS                                   
+44000                         40048.0  
+66000                          8207.0  
+68000                         10586.0  
+67000                          5258.0  
+27000                          5336.0  
+51000                         67838.0  
+11000                          1128.0  
+63000                          1321.0  
+84000                          1088.0  
+73000                          1002.0  
+08830                           356.0  
+52120                           262.0  
+56260                           320.0  
+39700                           297.0  
+64090                           184.0  
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">three_state_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -16508,7 +17003,7 @@ if (outputEl) {{
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[50]:</div>
+    <div class="prompt output_prompt">Out[51]:</div>
 
 
 
@@ -16531,7 +17026,6 @@ if (outputEl) {{
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>FIPS</th>
       <th>Total_Housing_2000</th>
       <th>Occupancy_Status_For_Housing_Units_2000</th>
       <th>Vacancy_Status_2000</th>
@@ -16541,6 +17035,7 @@ if (outputEl) {{
       <th>Sold_Not_Occupied_2000</th>
       <th>For_Seasonal_Recreational_Or_Occasional_Use_2000</th>
       <th>For_Migrant_Workers_2000</th>
+      <th>Total_Population_2000</th>
       <th>...</th>
       <th>Total_Population_2015</th>
       <th>Presence_of_Non-Relatives_2015</th>
@@ -16553,11 +17048,34 @@ if (outputEl) {{
       <th>Total_Population_2017</th>
       <th>Presence_of_Non-Relatives_2017</th>
     </tr>
+    <tr>
+      <th>FIPS</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>08830</td>
+      <th>08830</th>
       <td>77850</td>
       <td>77850</td>
       <td>3412</td>
@@ -16567,21 +17085,21 @@ if (outputEl) {{
       <td>353</td>
       <td>1</td>
       <td>554</td>
+      <td>185787</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>214196.0</td>
+      <td>933.0</td>
+      <td>5859.0</td>
+      <td>35.8</td>
+      <td>218677.0</td>
+      <td>591.0</td>
+      <td>5814.0</td>
+      <td>36.0</td>
+      <td>220859.0</td>
+      <td>356.0</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>56260</td>
+      <th>56260</th>
       <td>19379</td>
       <td>19379</td>
       <td>1289</td>
@@ -16591,21 +17109,21 @@ if (outputEl) {{
       <td>57</td>
       <td>3</td>
       <td>251</td>
+      <td>51867</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>86203.0</td>
+      <td>401.0</td>
+      <td>1703.0</td>
+      <td>31.1</td>
+      <td>87896.0</td>
+      <td>389.0</td>
+      <td>1707.0</td>
+      <td>31.4</td>
+      <td>89576.0</td>
+      <td>320.0</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>64090</td>
+      <th>64090</th>
       <td>20627</td>
       <td>20627</td>
       <td>1293</td>
@@ -16615,21 +17133,21 @@ if (outputEl) {{
       <td>84</td>
       <td>1</td>
       <td>267</td>
+      <td>51466</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>54549.0</td>
+      <td>111.0</td>
+      <td>1797.0</td>
+      <td>31.4</td>
+      <td>54592.0</td>
+      <td>112.0</td>
+      <td>1763.0</td>
+      <td>31.6</td>
+      <td>54658.0</td>
+      <td>184.0</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>39700</td>
+      <th>39700</th>
       <td>19771</td>
       <td>19771</td>
       <td>978</td>
@@ -16639,21 +17157,21 @@ if (outputEl) {{
       <td>86</td>
       <td>0</td>
       <td>237</td>
+      <td>50730</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>58374.0</td>
+      <td>130.0</td>
+      <td>1848.0</td>
+      <td>33.1</td>
+      <td>58933.0</td>
+      <td>161.0</td>
+      <td>1840.0</td>
+      <td>33.0</td>
+      <td>59414.0</td>
+      <td>297.0</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>52120</td>
+      <th>52120</th>
       <td>12293</td>
       <td>12293</td>
       <td>464</td>
@@ -16663,21 +17181,22 @@ if (outputEl) {{
       <td>22</td>
       <td>0</td>
       <td>65</td>
+      <td>34919</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>84018.0</td>
+      <td>272.0</td>
+      <td>1176.0</td>
+      <td>35.4</td>
+      <td>88247.0</td>
+      <td>374.0</td>
+      <td>1213.0</td>
+      <td>35.7</td>
+      <td>91917.0</td>
+      <td>262.0</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 55 columns</p>
+<p>5 rows × 54 columns</p>
 </div>
 </div>
 
@@ -16689,13 +17208,223 @@ if (outputEl) {{
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Population_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Population_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2012_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Population_2012&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2013_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Population_2013&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2014_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Population_2014&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2015_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Population_2015&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2016_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Population_2016&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2017_pop&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Population_2017&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Housing_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Housing_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2012_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Housing_2012&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2013_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Housing_2013&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2014_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Housing_2014&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2015_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Housing_2015&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2016_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Housing_2016&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2017_housing&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Total_Housing_2017&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2000_non-relatives&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Presence_of_Non-Relatives_2000&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2010_non-relatives&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Presence_of_Non-Relatives_2010&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2012_non-relatives&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Presence_of_Non-Relatives_2012&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2013_non-relatives&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Presence_of_Non-Relatives_2013&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2014_non-relatives&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Presence_of_Non-Relatives_2014&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2015_non-relatives&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Presence_of_Non-Relatives_2015&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2016_non-relatives&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Presence_of_Non-Relatives_2016&#39;</span><span class="p">]),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;2017_non-relatives&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;City_Name&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">three_state_df</span><span class="p">[</span><span class="s1">&#39;Presence_of_Non-Relatives_2017&#39;</span><span class="p">]),</span>
+<span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">barmode</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+        
+        
+            <div id="2f31def6-cc14-4ef2-9d2a-6dc464d3dd9d" class="plotly-graph-div" style="height:525px; width:100%;"></div>
+            <script type="text/javascript">
+                require(["plotly"], function(Plotly) {
+                    window.PLOTLYENV=window.PLOTLYENV || {};
+                    
+                if (document.getElementById("2f31def6-cc14-4ef2-9d2a-6dc464d3dd9d")) {
+                    Plotly.newPlot(
+                        '2f31def6-cc14-4ef2-9d2a-6dc464d3dd9d',
+                        [{"name": "2000_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [185787, 51867, 51466, 50730, 34919, 292648, 219773, 196086, 147306]}, {"name": "2010_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [205671.0, 81557.0, 54255.0, 56813.0, 75092.0, 261310.0, 210565.0, 195976.0, 145170.0]}, {"name": "2012_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [208332.0, 81667.0, 54145.0, 57021.0, 75210.0, 261955.0, 210967.0, 196459.0, 144703.0]}, {"name": "2013_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [209726.0, 83140.0, 54355.0, 57536.0, 78061.0, 260568.0, 210624.0, 197493.0, 144742.0]}, {"name": "2014_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [211655.0, 84660.0, 54466.0, 57935.0, 81025.0, 259959.0, 210461.0, 198654.0, 144648.0]}, {"name": "2015_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [214196.0, 86203.0, 54549.0, 58374.0, 84018.0, 259517.0, 210745.0, 199435.0, 144564.0]}, {"name": "2016_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [218677.0, 87896.0, 54592.0, 58933.0, 88247.0, 258989.0, 210291.0, 199725.0, 144350.0]}, {"name": "2017_pop", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [220859.0, 89576.0, 54658.0, 59414.0, 91917.0, 259574.0, 209463.0, 200999.0, 144405.0]}, {"name": "2000_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["77850", "19379", "20627", "19771", "12293", "145574", "99789", "77589", "68192"]}, {"name": "2010_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [92700.0, 30507.0, 22404.0, 22977.0, 26674.0, 133444.0, 97158.0, 80389.0, 64356.0]}, {"name": "2012_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [5659.0, 1694.0, 1686.0, 1681.0, 1444.0, 8891.0, 7192.0, 5296.0, 5342.0]}, {"name": "2013_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [5617.0, 1641.0, 1713.0, 1708.0, 1314.0, 9041.0, 7513.0, 5449.0, 5636.0]}, {"name": "2014_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [5677.0, 1613.0, 1750.0, 1788.0, 1197.0, 9363.0, 7973.0, 5655.0, 6021.0]}, {"name": "2015_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [5699.0, 1613.0, 1819.0, 1852.0, 1112.0, 9721.0, 8399.0, 5814.0, 6368.0]}, {"name": "2016_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [5859.0, 1703.0, 1797.0, 1848.0, 1176.0, 9658.0, 8354.0, 5664.0, 6296.0]}, {"name": "2017_housing", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [5814.0, 1707.0, 1763.0, 1840.0, 1213.0, 9431.0, 8140.0, 5425.0, 6091.0]}, {"name": "2000_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": ["185787", "51867", "51466", "50730", "34919", "292648", "219773", "196086", "147306"]}, {"name": "2010_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [85704.0, 27729.0, 20832.0, 21203.0, 25302.0, 112536.0, 87027.0, 74550.0, 57355.0]}, {"name": "2012_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [1077.0, 327.0, 95.0, 445.0, 604.0, 1549.0, 1746.0, 1748.0, 1049.0]}, {"name": "2013_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [994.0, 415.0, 100.0, 469.0, 560.0, 1386.0, 1637.0, 1479.0, 1218.0]}, {"name": "2014_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [1009.0, 405.0, 102.0, 247.0, 631.0, 1400.0, 1258.0, 1379.0, 1344.0]}, {"name": "2015_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [933.0, 401.0, 111.0, 130.0, 272.0, 1433.0, 1365.0, 1407.0, 1314.0]}, {"name": "2016_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [591.0, 389.0, 112.0, 161.0, 374.0, 1235.0, 1302.0, 1148.0, 1036.0]}, {"name": "2017_non-relatives", "type": "bar", "x": ["Boise City city, Idaho", "Nampa city, Idaho", "Pocatello city, Idaho", "Idaho Falls city, Idaho", "Meridian city, Idaho", "Buffalo city, New York", "Rochester city, New York", "Yonkers city, New York", "Syracuse city, New York"], "y": [356.0, 320.0, 184.0, 297.0, 262.0, 1128.0, 1321.0, 1088.0, 1002.0]}],
+                        {"barmode": "group", "template": {"data": {"bar": [{"error_x": {"color": "#2a3f5f"}, "error_y": {"color": "#2a3f5f"}, "marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "bar"}], "barpolar": [{"marker": {"line": {"color": "#E5ECF6", "width": 0.5}}, "type": "barpolar"}], "carpet": [{"aaxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "baxis": {"endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f"}, "type": "carpet"}], "choropleth": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "choropleth"}], "contour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "contour"}], "contourcarpet": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "contourcarpet"}], "heatmap": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmap"}], "heatmapgl": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "heatmapgl"}], "histogram": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "histogram"}], "histogram2d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2d"}], "histogram2dcontour": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "histogram2dcontour"}], "mesh3d": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "type": "mesh3d"}], "parcoords": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "parcoords"}], "scatter": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter"}], "scatter3d": [{"line": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatter3d"}], "scattercarpet": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattercarpet"}], "scattergeo": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergeo"}], "scattergl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattergl"}], "scattermapbox": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scattermapbox"}], "scatterpolar": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolar"}], "scatterpolargl": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterpolargl"}], "scatterternary": [{"marker": {"colorbar": {"outlinewidth": 0, "ticks": ""}}, "type": "scatterternary"}], "surface": [{"colorbar": {"outlinewidth": 0, "ticks": ""}, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "type": "surface"}], "table": [{"cells": {"fill": {"color": "#EBF0F8"}, "line": {"color": "white"}}, "header": {"fill": {"color": "#C8D4E3"}, "line": {"color": "white"}}, "type": "table"}]}, "layout": {"annotationdefaults": {"arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1}, "colorscale": {"diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]], "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]]}, "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": {"color": "#2a3f5f"}, "geo": {"bgcolor": "white", "lakecolor": "white", "landcolor": "#E5ECF6", "showlakes": true, "showland": true, "subunitcolor": "white"}, "hoverlabel": {"align": "left"}, "hovermode": "closest", "mapbox": {"style": "light"}, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": {"angularaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "radialaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "scene": {"xaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "yaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}, "zaxis": {"backgroundcolor": "#E5ECF6", "gridcolor": "white", "gridwidth": 2, "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white"}}, "shapedefaults": {"line": {"color": "#2a3f5f"}}, "ternary": {"aaxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "baxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}, "bgcolor": "#E5ECF6", "caxis": {"gridcolor": "white", "linecolor": "white", "ticks": ""}}, "title": {"x": 0.05}, "xaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}, "yaxis": {"automargin": true, "gridcolor": "white", "linecolor": "white", "ticks": "", "zerolinecolor": "white", "zerolinewidth": 2}}}},
+                        {"responsive": true}
+                    ).then(function(){
+                            
+var gd = document.getElementById('2f31def6-cc14-4ef2-9d2a-6dc464d3dd9d');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })
+                };
+                });
+            </script>
+        </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="kn">import</span> <span class="nn">sklearn.metrics</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">pandas_ml</span> <span class="k">import</span> <span class="n">ConfusionMatrix</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">glm</span><span class="p">(</span><span class="s1">&#39;Total_Population_2000 ~ Total_Population_2010 + Total_Population_2012 + Total_Population_2013&#39;</span><span class="p">,</span> <span class="n">three_state_df</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">families</span><span class="o">.</span><span class="n">Binomial</span><span class="p">())</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">mod</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/Ryan/anaconda3/lib/python3.7/site-packages/statsmodels/genmod/families/family.py:890: RuntimeWarning:
+
+divide by zero encountered in true_divide
+
+/Users/Ryan/anaconda3/lib/python3.7/site-packages/statsmodels/genmod/families/family.py:942: RuntimeWarning:
+
+divide by zero encountered in true_divide
+
+/Users/Ryan/anaconda3/lib/python3.7/site-packages/statsmodels/genmod/families/family.py:942: RuntimeWarning:
+
+invalid value encountered in add
+
+/Users/Ryan/anaconda3/lib/python3.7/site-packages/statsmodels/genmod/families/family.py:943: RuntimeWarning:
+
+divide by zero encountered in log
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[59]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table class="simpletable">
+<caption>Generalized Linear Model Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>   <td>Total_Population_2000</td> <th>  No. Observations:  </th>   <td>     9</td>  
+</tr>
+<tr>
+  <th>Model:</th>                    <td>GLM</td>          <th>  Df Residuals:      </th>   <td>     5</td>  
+</tr>
+<tr>
+  <th>Model Family:</th>          <td>Binomial</td>        <th>  Df Model:          </th>   <td>     3</td>  
+</tr>
+<tr>
+  <th>Link Function:</th>           <td>logit</td>         <th>  Scale:             </th>  <td>  1.0000</td> 
+</tr>
+<tr>
+  <th>Method:</th>                  <td>IRLS</td>          <th>  Log-Likelihood:    </th>  <td>     nan</td> 
+</tr>
+<tr>
+  <th>Date:</th>              <td>Sat, 30 Nov 2019</td>    <th>  Deviance:          </th> <td>1.1835e+08</td>
+</tr>
+<tr>
+  <th>Time:</th>                  <td>18:54:12</td>        <th>  Pearson chi2:      </th>  <td>1.07e+27</td> 
+</tr>
+<tr>
+  <th>No. Iterations:</th>            <td>2</td>           <th>                     </th>      <td> </td>    
+</tr>
+<tr>
+  <th>Covariance Type:</th>       <td>nonrobust</td>       <th>                     </th>      <td> </td>    
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+            <td></td>               <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>             <td>-4.567e+19</td> <td> 7.28e+07</td> <td>-6.28e+11</td> <td> 0.000</td> <td>-4.57e+19</td> <td>-4.57e+19</td>
+</tr>
+<tr>
+  <th>Total_Population_2010</th> <td> 2.696e+16</td> <td> 3.56e+04</td> <td> 7.57e+11</td> <td> 0.000</td> <td>  2.7e+16</td> <td>  2.7e+16</td>
+</tr>
+<tr>
+  <th>Total_Population_2012</th> <td> 7.486e+16</td> <td> 5.36e+04</td> <td>  1.4e+12</td> <td> 0.000</td> <td> 7.49e+16</td> <td> 7.49e+16</td>
+</tr>
+<tr>
+  <th>Total_Population_2013</th> <td>-9.454e+16</td> <td> 2.62e+04</td> <td>-3.61e+12</td> <td> 0.000</td> <td>-9.45e+16</td> <td>-9.45e+16</td>
+</tr>
+</table>
+</div>
+
+</div>
+
 </div>
 </div>
 
