@@ -202,10 +202,37 @@ for x in acs_years:
 ny_join.head()
 
 
-# In[ ]:
+# In[19]:
 
 
-
+fig = go.Figure(data=[
+    go.Bar(name='2000_pop', x=ny_join['City_Name'], y=ny_join['Total_Population_2000']),
+    go.Bar(name='2010_pop', x=ny_join['City_Name'], y=ny_join['Total_Population_2010']),
+    go.Bar(name='2012_pop', x=ny_join['City_Name'], y=ny_join['Total_Population_2012']),
+    go.Bar(name='2013_pop', x=ny_join['City_Name'], y=ny_join['Total_Population_2013']),
+    go.Bar(name='2014_pop', x=ny_join['City_Name'], y=ny_join['Total_Population_2014']),
+    go.Bar(name='2015_pop', x=ny_join['City_Name'], y=ny_join['Total_Population_2015']),
+    go.Bar(name='2016_pop', x=ny_join['City_Name'], y=ny_join['Total_Population_2016']),
+    go.Bar(name='2017_pop', x=ny_join['City_Name'], y=ny_join['Total_Population_2017']),
+    go.Bar(name='2000_housing', x=ny_join['City_Name'], y=ny_join['Total_Housing_2000']),
+    go.Bar(name='2010_housing', x=ny_join['City_Name'], y=ny_join['Total_Housing_2010']),
+    go.Bar(name='2012_housing', x=ny_join['City_Name'], y=ny_join['Total_Housing_2012']),
+    go.Bar(name='2013_housing', x=ny_join['City_Name'], y=ny_join['Total_Housing_2013']),
+    go.Bar(name='2014_housing', x=ny_join['City_Name'], y=ny_join['Total_Housing_2014']),
+    go.Bar(name='2015_housing', x=ny_join['City_Name'], y=ny_join['Total_Housing_2015']),
+    go.Bar(name='2016_housing', x=ny_join['City_Name'], y=ny_join['Total_Housing_2016']),
+    go.Bar(name='2017_housing', x=ny_join['City_Name'], y=ny_join['Total_Housing_2017']),
+    go.Bar(name='2000_non-relatives', x=ny_join['City_Name'], y=ny_join['Presence_of_Non-Relatives_2000']),
+    go.Bar(name='2010_non-relatives', x=ny_join['City_Name'], y=ny_join['Presence_of_Non-Relatives_2010']),
+    go.Bar(name='2012_non-relatives', x=ny_join['City_Name'], y=ny_join['Presence_of_Non-Relatives_2012']),
+    go.Bar(name='2013_non-relatives', x=ny_join['City_Name'], y=ny_join['Presence_of_Non-Relatives_2013']),
+    go.Bar(name='2014_non-relatives', x=ny_join['City_Name'], y=ny_join['Presence_of_Non-Relatives_2014']),
+    go.Bar(name='2015_non-relatives', x=ny_join['City_Name'], y=ny_join['Presence_of_Non-Relatives_2015']),
+    go.Bar(name='2016_non-relatives', x=ny_join['City_Name'], y=ny_join['Presence_of_Non-Relatives_2016']),
+    go.Bar(name='2017_non-relatives', x=ny_join['City_Name'], y=ny_join['Presence_of_Non-Relatives_2017']),
+])
+fig.update_layout(barmode='group')
+fig.show()
 
 
 # In[ ]:
