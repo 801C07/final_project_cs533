@@ -32,6 +32,12 @@ from us import states
 import plotly.graph_objects as go
 
 
+# In[63]:
+
+
+states.ID.shapefile_urls('county')
+
+
 # In[3]:
 
 
@@ -409,6 +415,12 @@ id_join['Total_Population_2000'] = id_join['Total_Population_2000'].astype('i8')
 id_join =  id_join.nlargest(5, 'Total_Population_2000')
 
 
+# In[55]:
+
+
+id_join.head()
+
+
 # In[38]:
 
 
@@ -531,20 +543,71 @@ for x in acs_years_ca:
 # In[49]:
 
 
-for x in three_state_acs:
-    three_state_df = three_state_df.join(x)
+three_state_df.set_index('FIPS', inplace=True)
 
 
 # In[50]:
 
 
+for x in three_state_acs:
+    print(x)
+    three_state_df = three_state_df.join(x, on="FIPS")
+
+
+# In[51]:
+
+
 three_state_df.head()
 
 
-# In[ ]:
+# In[53]:
 
 
+fig = go.Figure(data=[
+    go.Bar(name='2000_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2000']),
+    go.Bar(name='2010_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2010']),
+    go.Bar(name='2012_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2012']),
+    go.Bar(name='2013_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2013']),
+    go.Bar(name='2014_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2014']),
+    go.Bar(name='2015_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2015']),
+    go.Bar(name='2016_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2016']),
+    go.Bar(name='2017_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2017']),
+    go.Bar(name='2000_housing', x=three_state_df['City_Name'], y=three_state_df['Total_Housing_2000']),
+    go.Bar(name='2010_housing', x=three_state_df['City_Name'], y=three_state_df['Total_Housing_2010']),
+    go.Bar(name='2012_housing', x=three_state_df['City_Name'], y=three_state_df['Total_Housing_2012']),
+    go.Bar(name='2013_housing', x=three_state_df['City_Name'], y=three_state_df['Total_Housing_2013']),
+    go.Bar(name='2014_housing', x=three_state_df['City_Name'], y=three_state_df['Total_Housing_2014']),
+    go.Bar(name='2015_housing', x=three_state_df['City_Name'], y=three_state_df['Total_Housing_2015']),
+    go.Bar(name='2016_housing', x=three_state_df['City_Name'], y=three_state_df['Total_Housing_2016']),
+    go.Bar(name='2017_housing', x=three_state_df['City_Name'], y=three_state_df['Total_Housing_2017']),
+    go.Bar(name='2000_non-relatives', x=three_state_df['City_Name'], y=three_state_df['Presence_of_Non-Relatives_2000']),
+    go.Bar(name='2010_non-relatives', x=three_state_df['City_Name'], y=three_state_df['Presence_of_Non-Relatives_2010']),
+    go.Bar(name='2012_non-relatives', x=three_state_df['City_Name'], y=three_state_df['Presence_of_Non-Relatives_2012']),
+    go.Bar(name='2013_non-relatives', x=three_state_df['City_Name'], y=three_state_df['Presence_of_Non-Relatives_2013']),
+    go.Bar(name='2014_non-relatives', x=three_state_df['City_Name'], y=three_state_df['Presence_of_Non-Relatives_2014']),
+    go.Bar(name='2015_non-relatives', x=three_state_df['City_Name'], y=three_state_df['Presence_of_Non-Relatives_2015']),
+    go.Bar(name='2016_non-relatives', x=three_state_df['City_Name'], y=three_state_df['Presence_of_Non-Relatives_2016']),
+    go.Bar(name='2017_non-relatives', x=three_state_df['City_Name'], y=three_state_df['Presence_of_Non-Relatives_2017']),
+])
+fig.update_layout(barmode='group')
+fig.show()
 
+
+# In[56]:
+
+
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+import sklearn.metrics
+import sys
+from pandas_ml import ConfusionMatrix
+
+
+# In[59]:
+
+
+mod = smf.glm('Total_Population_2000 ~ Total_Population_2010 + Total_Population_2012 + Total_Population_2013', three_state_df, family=sm.families.Binomial()).fit()
+mod.summary()
 
 
 # In[ ]:
