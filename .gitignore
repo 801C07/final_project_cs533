@@ -1,0 +1,4 @@
+*.ipynb_checkbooks/*
+*.ipynb_checkbooks
+.ipynb_checkpoints/*
+.ipynb_checkpoints
