@@ -62,7 +62,7 @@ import plotly.graph_objects as go
 # 
 # **Greenhouse Gas Data:**
 
-# In[5]:
+# In[2]:
 
 
 ghg = pd.DataFrame()
@@ -93,7 +93,7 @@ pivot_em = total_emissions.pivot(index='FIPS', columns='Year', values='Total rep
 
 # **US Census Data:**
 
-# In[6]:
+# In[3]:
 
 
 #API key
@@ -178,7 +178,7 @@ id_join = load_census(states.ID.fips)
 
 # **American Community Survey Data:** 
 
-# In[7]:
+# In[4]:
 
 
 def load_acs(state):
@@ -218,7 +218,7 @@ acs_years_ny = load_acs(states.NY.fips)
 # ## Census Data
 # Join individual state census data to get a comparative understanding of the data.
 
-# In[8]:
+# In[5]:
 
 
 three_state_df = pd.concat([id_join, ca_join, ny_join])
@@ -226,7 +226,37 @@ three_state_df = pd.concat([id_join, ca_join, ny_join])
 three_state_df.reset_index(inplace=True)
 
 
+# In[6]:
+
+
+i = 0
+three_state_acs = []
+for x in acs_years_ca:
+    acs_1 = pd.concat([acs_years_ca[i], acs_years_ny[i], acs_years_id[i]])
+    three_state_acs.append(acs_1)
+    i = i + 1
+
+
+# In[7]:
+
+
+three_state_df.set_index('FIPS', inplace=True)
+
+
+# In[8]:
+
+
+for x in three_state_acs:
+    three_state_df = three_state_df.join(x, on="FIPS")
+
+
 # In[9]:
+
+
+three_state_df.reset_index(inplace=True)
+
+
+# In[10]:
 
 
 three_state_df.head()
@@ -234,7 +264,7 @@ three_state_df.head()
 
 # ### Plot Data Census Data From Three States
 
-# In[10]:
+# In[11]:
 
 
 fig = go.Figure(data=[
@@ -252,12 +282,18 @@ fig.show()
 # #### Median Age
 # We also wanted to compare median age across the various cities, since that could have an impact on sustainability. We decide to do this before adjusting our data, so we can see the full picture.
 
-# In[11]:
+# In[12]:
 
 
 fig = go.Figure(data=[
     go.Bar(name='2000_age', x=three_state_df['City_Name'], y=three_state_df['Median_Age_2000']),
     go.Bar(name='2010_age', x=three_state_df['City_Name'], y=three_state_df['Median_Age_2010']),
+    go.Bar(name='2012_age', x=three_state_df['City_Name'], y=three_state_df['Median_Age_2012']),
+    go.Bar(name='2013_age', x=three_state_df['City_Name'], y=three_state_df['Median_Age_2013']),
+    go.Bar(name='2014_age', x=three_state_df['City_Name'], y=three_state_df['Median_Age_2014']),
+    go.Bar(name='2015_age', x=three_state_df['City_Name'], y=three_state_df['Median_Age_2015']),
+    go.Bar(name='2016_age', x=three_state_df['City_Name'], y=three_state_df['Median_Age_2016']),
+    go.Bar(name='2017_age', x=three_state_df['City_Name'], y=three_state_df['Median_Age_2017']),
 ])
 fig.update_layout(barmode='group')
 fig.show()
@@ -265,14 +301,14 @@ fig.show()
 
 # **We will drop New York City and Los Angeles from the graph since they are skewing the figure**
 
-# In[12]:
+# In[13]:
 
 
 three_state_df.drop(three_state_df[three_state_df['City_Name'] =='Los Angeles city, California'].index, inplace = True)
 three_state_df.drop(three_state_df[three_state_df['City_Name'] =='New York city, New York'].index, inplace = True)
 
 
-# In[13]:
+# In[14]:
 
 
 fig = go.Figure(data=[
@@ -289,13 +325,13 @@ fig.show()
 
 # **California is still being an issue, lets drop those cities form our graph**
 
-# In[14]:
+# In[15]:
 
 
 three_state_df.drop(three_state_df[three_state_df['state'] ==states.CA.fips].index, inplace = True)
 
 
-# In[15]:
+# In[16]:
 
 
 fig = go.Figure(data=[
@@ -313,42 +349,12 @@ fig.show()
 # This allows us to visually compare the city census data for New York State and Idaho easily. **NOTE:** Double click on a legend item in the graph to isolate specifc data.
 
 # ## American Community Survey
-# Now was will merge the ACS data in with the census and emissions data to expand the timeframe of our analysis.
+# Now let's look at the ACS data with the census and emissions data to expand the timeframe of our analysis.
 # 
-
-# In[16]:
-
-
-i = 0
-three_state_acs = []
-for x in acs_years_ca:
-    acs_1 = pd.concat([acs_years_ca[i], acs_years_ny[i], acs_years_id[i]])
-    three_state_acs.append(acs_1)
-    i = i + 1
-
-
-# In[17]:
-
-
-three_state_df.set_index('FIPS', inplace=True)
-
-
-# In[18]:
-
-
-for x in three_state_acs:
-    three_state_df = three_state_df.join(x, on="FIPS")
-
-
-# In[19]:
-
-
-three_state_df.head()
-
 
 # ### Plot all the data
 
-# In[20]:
+# In[17]:
 
 
 fig = go.Figure(data=[
@@ -358,7 +364,7 @@ fig = go.Figure(data=[
     go.Bar(name='2013_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2013']),
     go.Bar(name='2014_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2014']),
     go.Bar(name='2015_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2015']),
-    go.Bar(name='2016_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2016']),
+    go.Bar(name='2016_pop', x=t hree_state_df['City_Name'], y=three_state_df['Total_Population_2016']),
     go.Bar(name='2017_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2017']),
     go.Bar(name='2000_housing', x=three_state_df['City_Name'], y=three_state_df['Total_Housing_2000']),
     go.Bar(name='2010_housing', x=three_state_df['City_Name'], y=three_state_df['Total_Housing_2010']),
@@ -390,16 +396,28 @@ fig.update_layout(barmode='group')
 fig.show()
 
 
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
 # **Idaho Falls and Rochester are skewing the graph, due to high level of emissions data so we will remove them.**
 
-# In[21]:
+# In[ ]:
 
 
 three_state_df.drop(three_state_df[three_state_df['City_Name'] =='Idaho Falls city, Idaho'].index, inplace = True)
 three_state_df.drop(three_state_df[three_state_df['City_Name'] =='Rochester city, New York'].index, inplace = True)
 
 
-# In[22]:
+# In[ ]:
 
 
 fig = go.Figure(data=[
@@ -441,10 +459,16 @@ fig.update_layout(barmode='group')
 fig.show()
 
 
+# In[ ]:
+
+
+
+
+
 # ## Modeling Sustainability
 # Using the data we've been working with, we will now make a model to represent whether a city is growing sustainably or not. 
 
-# In[23]:
+# In[ ]:
 
 
 import statsmodels.api as sm
@@ -454,7 +478,7 @@ import sys
 from pandas_ml import ConfusionMatrix
 
 
-# In[24]:
+# In[ ]:
 
 
 #Restore Data Frame, such that we have all the cities that have been dropped
@@ -462,7 +486,7 @@ three_state_df = pd.concat([id_join, ca_join, ny_join])
 three_state_df.reset_index(inplace=True)
 
 
-# In[26]:
+# In[ ]:
 
 
 mod = smf.glm('Total_Population_2000 ~ Total_Population_2010  + Total_Population_2013', three_state_df, family=sm.families.Binomial()).fit()
