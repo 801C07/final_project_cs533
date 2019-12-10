@@ -3,18 +3,13 @@
 
 # # California -- City Sustainability
 
-# In[1]:
-
-
-get_ipython().run_line_magic('pip', 'install census us')
-
-
-# In[2]:
+# In[47]:
 
 
 import pandas as pd
 import seaborn as sns
 import matplotlib as plt
+import os
 
 from census import Census
 from us import states
@@ -22,15 +17,46 @@ from us import states
 import plotly.graph_objects as go
 
 
-# In[3]:
+# In[48]:
 
 
 c = Census('fb97753783c42ae57fe1a640e38fe04e921e5d1a')
 
 
+# **Greenhouse Gas Data:**
+
+# In[49]:
+
+
+ghg = pd.DataFrame()
+
+for f in os.listdir('../data/2018_data_summary_spreadsheets'):
+    temp = pd.read_excel('../data/2018_data_summary_spreadsheets/'+f, sheet_name=0)
+    temp['Year'] = f.split('.')[0].split('_')[2]    
+    ghg = pd.concat([temp, ghg], sort=False)
+    
+fips_map = pd.read_excel('../data/fips-codes.xls', sheet_name=0)
+
+fips_map = fips_map[fips_map['Entity Description'] == 'city']
+
+def str_func(x):
+    return str(x).zfill(5)
+
+fips_map['FIPS'] = fips_map['FIPS Entity Code'].apply(str_func)
+fips_map['City'] = fips_map['GU Name']
+fips_map['State'] = fips_map['State Abbreviation']
+
+ghg_mapped = pd.merge(ghg, fips_map, on=['State', 'City'])
+total_emissions = ghg_mapped.groupby(['FIPS','Year'])['Total reported direct emissions'].agg('sum').to_frame()
+
+total_emissions.reset_index(inplace=True)
+
+pivot_em = total_emissions.pivot(index='FIPS', columns='Year', values='Total reported direct emissions')
+
+
 # ## Get's the 5 largest cities in California
 
-# In[4]:
+# In[50]:
 
 
 city_2010 = c.sf1.state_place(('NAME', 'H001001', 
@@ -60,13 +86,13 @@ c_pop_2010_50000 = c_pop_2010.rename(columns={
         'H005007': 'For_Migrant_Workers_2010'})
 
 
-# In[5]:
+# In[51]:
 
 
 c_pop_2010_50000.head()
 
 
-# In[6]:
+# In[52]:
 
 
 city_2000 = c.sf1.state_place(('NAME', 'H001001', 
@@ -95,50 +121,51 @@ c_pop_2000_50000 = c_pop_2000.rename(columns={
         'H005007': 'For_Migrant_Workers_2000'})
 
 
-# In[7]:
+# In[53]:
 
 
 c_pop_2000_50000.drop(columns=['City_Name', 'state'], inplace=True)
 
 
-# In[8]:
+# In[54]:
 
 
 c_pop_2000_50000.head()
 
 
-# In[9]:
+# In[55]:
 
 
 c_pop_2000_50000.set_index('FIPS', inplace=True)
 c_pop_2010_50000.set_index('FIPS', inplace=True)
 
 
-# In[10]:
+# In[56]:
 
 
 ca_join = c_pop_2000_50000.join(c_pop_2010_50000, on='FIPS')
+ca_join = ca_join.join(pivot_em, on='FIPS')
 
 
-# In[11]:
+# In[57]:
 
 
 ca_join.head()
 
 
-# In[12]:
+# In[58]:
 
 
 ca_join['Total_Population_2000'] = ca_join['Total_Population_2000'].astype('i8')
 
 
-# In[13]:
+# In[59]:
 
 
 ca_join = ca_join.nlargest(5, 'Total_Population_2000')
 
 
-# In[14]:
+# In[60]:
 
 
 fig = go.Figure(data=[
@@ -153,7 +180,7 @@ fig.update_layout(barmode='group')
 fig.show()
 
 
-# In[15]:
+# In[61]:
 
 
 fig = go.Figure(data=[
@@ -166,7 +193,7 @@ fig.show()
 
 # ## American Community Servey
 
-# In[16]:
+# In[62]:
 
 
 i = 0
@@ -178,7 +205,6 @@ for x in range(2012, 2018):
                                    'B09018_007E',
                                    'B01002_001E'), states.CA.fips, '*', year=x)
     acs_years.append(pd.DataFrame.from_records(acs_test))
-    print(x)
     acs_years[i] = acs_years[i].rename(columns={
         'NAME' : 'City_Name',
         'place': 'FIPS',
@@ -193,20 +219,20 @@ for x in range(2012, 2018):
     i = i + 1
 
 
-# In[17]:
+# In[63]:
 
 
 for x in acs_years:
     ca_join = ca_join.join(x)
 
 
-# In[18]:
+# In[64]:
 
 
 ca_join.head()
 
 
-# In[19]:
+# In[65]:
 
 
 fig = go.Figure(data=[
@@ -234,6 +260,50 @@ fig = go.Figure(data=[
     go.Bar(name='2015_non-relatives', x=ca_join['City_Name'], y=ca_join['Presence_of_Non-Relatives_2015']),
     go.Bar(name='2016_non-relatives', x=ca_join['City_Name'], y=ca_join['Presence_of_Non-Relatives_2016']),
     go.Bar(name='2017_non-relatives', x=ca_join['City_Name'], y=ca_join['Presence_of_Non-Relatives_2017']),
+])
+fig.update_layout(barmode='group')
+fig.show()
+
+
+# **Plot with emissions data**
+
+# In[66]:
+
+
+fig = go.Figure(data=[
+    go.Bar(name='2000_pop', x=ca_join['City_Name'], y=ca_join['Total_Population_2000']),
+    go.Bar(name='2010_pop', x=ca_join['City_Name'], y=ca_join['Total_Population_2010']),
+    go.Bar(name='2012_pop', x=ca_join['City_Name'], y=ca_join['Total_Population_2012']),
+    go.Bar(name='2013_pop', x=ca_join['City_Name'], y=ca_join['Total_Population_2013']),
+    go.Bar(name='2014_pop', x=ca_join['City_Name'], y=ca_join['Total_Population_2014']),
+    go.Bar(name='2015_pop', x=ca_join['City_Name'], y=ca_join['Total_Population_2015']),
+    go.Bar(name='2016_pop', x=ca_join['City_Name'], y=ca_join['Total_Population_2016']),
+    go.Bar(name='2017_pop', x=ca_join['City_Name'], y=ca_join['Total_Population_2017']),
+    go.Bar(name='2000_housing', x=ca_join['City_Name'], y=ca_join['Total_Housing_2000']),
+    go.Bar(name='2010_housing', x=ca_join['City_Name'], y=ca_join['Total_Housing_2010']),
+    go.Bar(name='2012_housing', x=ca_join['City_Name'], y=ca_join['Total_Housing_2012']),
+    go.Bar(name='2013_housing', x=ca_join['City_Name'], y=ca_join['Total_Housing_2013']),
+    go.Bar(name='2014_housing', x=ca_join['City_Name'], y=ca_join['Total_Housing_2014']),
+    go.Bar(name='2015_housing', x=ca_join['City_Name'], y=ca_join['Total_Housing_2015']),
+    go.Bar(name='2016_housing', x=ca_join['City_Name'], y=ca_join['Total_Housing_2016']),
+    go.Bar(name='2017_housing', x=ca_join['City_Name'], y=ca_join['Total_Housing_2017']),
+    go.Bar(name='2000_non-relatives', x=ca_join['City_Name'], y=ca_join['Presence_of_Non-Relatives_2000']),
+    go.Bar(name='2010_non-relatives', x=ca_join['City_Name'], y=ca_join['Presence_of_Non-Relatives_2010']),
+    go.Bar(name='2012_non-relatives', x=ca_join['City_Name'], y=ca_join['Presence_of_Non-Relatives_2012']),
+    go.Bar(name='2013_non-relatives', x=ca_join['City_Name'], y=ca_join['Presence_of_Non-Relatives_2013']),
+    go.Bar(name='2014_non-relatives', x=ca_join['City_Name'], y=ca_join['Presence_of_Non-Relatives_2014']),
+    go.Bar(name='2015_non-relatives', x=ca_join['City_Name'], y=ca_join['Presence_of_Non-Relatives_2015']),
+    go.Bar(name='2016_non-relatives', x=ca_join['City_Name'], y=ca_join['Presence_of_Non-Relatives_2016']),
+    go.Bar(name='2017_non-relatives', x=ca_join['City_Name'], y=ca_join['Presence_of_Non-Relatives_2017']),
+    go.Bar(name='2010_direct_emissions', x=ca_join['City_Name'], y=ca_join['2010']),
+    go.Bar(name='2011_direct_emissions', x=ca_join['City_Name'], y=ca_join['2011']),
+    go.Bar(name='2012_direct_emissions', x=ca_join['City_Name'], y=ca_join['2012']),
+    go.Bar(name='2013_direct_emissions', x=ca_join['City_Name'], y=ca_join['2013']),
+    go.Bar(name='2014_direct_emissions', x=ca_join['City_Name'], y=ca_join['2014']),
+    go.Bar(name='2015_direct_emissions', x=ca_join['City_Name'], y=ca_join['2015']),
+    go.Bar(name='2016_direct_emissions', x=ca_join['City_Name'], y=ca_join['2016']),
+    go.Bar(name='2017_direct_emissions', x=ca_join['City_Name'], y=ca_join['2017']),
+    go.Bar(name='2018_direct_emissions', x=ca_join['City_Name'], y=ca_join['2018'])
 ])
 fig.update_layout(barmode='group')
 fig.show()
