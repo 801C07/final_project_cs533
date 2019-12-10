@@ -364,7 +364,7 @@ fig = go.Figure(data=[
     go.Bar(name='2013_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2013']),
     go.Bar(name='2014_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2014']),
     go.Bar(name='2015_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2015']),
-    go.Bar(name='2016_pop', x=t hree_state_df['City_Name'], y=three_state_df['Total_Population_2016']),
+    go.Bar(name='2016_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2016']),
     go.Bar(name='2017_pop', x=three_state_df['City_Name'], y=three_state_df['Total_Population_2017']),
     go.Bar(name='2000_housing', x=three_state_df['City_Name'], y=three_state_df['Total_Housing_2000']),
     go.Bar(name='2010_housing', x=three_state_df['City_Name'], y=three_state_df['Total_Housing_2010']),
@@ -410,14 +410,14 @@ fig.show()
 
 # **Idaho Falls and Rochester are skewing the graph, due to high level of emissions data so we will remove them.**
 
-# In[ ]:
+# In[18]:
 
 
 three_state_df.drop(three_state_df[three_state_df['City_Name'] =='Idaho Falls city, Idaho'].index, inplace = True)
 three_state_df.drop(three_state_df[three_state_df['City_Name'] =='Rochester city, New York'].index, inplace = True)
 
 
-# In[ ]:
+# In[19]:
 
 
 fig = go.Figure(data=[
@@ -468,7 +468,7 @@ fig.show()
 # ## Modeling Sustainability
 # Using the data we've been working with, we will now make a model to represent whether a city is growing sustainably or not. 
 
-# In[ ]:
+# In[20]:
 
 
 import statsmodels.api as sm
@@ -478,7 +478,7 @@ import sys
 from pandas_ml import ConfusionMatrix
 
 
-# In[ ]:
+# In[21]:
 
 
 #Restore Data Frame, such that we have all the cities that have been dropped
@@ -486,7 +486,7 @@ three_state_df = pd.concat([id_join, ca_join, ny_join])
 three_state_df.reset_index(inplace=True)
 
 
-# In[ ]:
+# In[22]:
 
 
 mod = smf.glm('Total_Population_2000 ~ Total_Population_2010  + Total_Population_2013', three_state_df, family=sm.families.Binomial()).fit()
